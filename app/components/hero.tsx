@@ -21,9 +21,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="max-w-2xl mx-auto text-lg md:text-xl text-zinc-600 dark:text-zinc-400"
         >
-          Quantitative Problem Solver | Math & Computer Science @ College of Idaho
-          <br />
-          From Azerbaijan Digital Infrastructure to Idaho Operations.
+          Math & Computer Science @ College of Idaho
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,7 +30,7 @@ const Hero = () => {
         >
           <a
             href="#projects"
-            className="inline-block bg-blue-600 text-white font-medium px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300 shadow-lg shadow-blue-600/20"
+            className="inline-block bg-[#355872] text-white font-medium px-8 py-3 rounded-lg hover:bg-[#2a4356] transition-colors duration-300 shadow-lg shadow-[#355872]/20"
           >
             Explore My Projects
           </a>

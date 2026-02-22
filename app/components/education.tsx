@@ -42,12 +42,12 @@ const Education = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900/50 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800"
+            className="bg-white dark:bg-zinc-900/50 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 transition-all duration-300 hover:border-zinc-300 dark:hover:border-zinc-700 hover:shadow-md"
           >
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="text-lg font-semibold text-zinc-900 dark:text-white">{edu.institution}</h3>
-                <p className="text-md font-medium text-blue-400">{edu.degree}</p>
+                <p className="text-md font-medium text-custom-blue">{edu.degree}</p>
               </div>
               <p className="text-sm text-zinc-500 dark:text-zinc-400 text-right flex-shrink-0 ml-4">{edu.period}</p>
             </div>

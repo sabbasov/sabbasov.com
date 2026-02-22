@@ -9,6 +9,8 @@ import Header from './components/header';
 import Hero from './components/hero';
 import Projects from './components/projects';
 import Skills from './components/skills';
+import ScrollToTop from './components/scroll-to-top';
+import Contact from './components/contact';
 
 export default function Home() {
   useEffect(() => {
@@ -25,8 +27,10 @@ export default function Home() {
         <Projects />
         <Aviation />
         <Skills />
+        <Contact />
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

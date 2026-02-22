@@ -7,14 +7,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { setTheme, resolvedTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
 
   if (!mounted) {
@@ -31,13 +31,13 @@ const ThemeToggle = () => {
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
-          key={theme === 'dark' ? 'moon' : 'sun'}
+          key={resolvedTheme === 'dark' ? 'moon' : 'sun'}
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 20, opacity: 0 }}
           transition={{ duration: 0.2 }}
         >
-          {theme === 'dark' ? <Moon size={20} /> : <Sun size={20} />}
+          {resolvedTheme === 'dark' ? <Moon size={20} /> : <Sun size={20} />}
         </motion.div>
       </AnimatePresence>
     </button>

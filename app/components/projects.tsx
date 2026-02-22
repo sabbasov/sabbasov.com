@@ -50,7 +50,7 @@ const Projects = () => {
             whileInView="visible"
             transition={{ duration: 0.5, delay: index * 0.2 }}
             viewport={{ once: true }}
-            className="bg-white dark:bg-zinc-900/50 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col"
+            className="bg-white dark:bg-zinc-900/50 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 flex flex-col transition-all duration-300 hover:border-[#355872]/50 hover:shadow-lg hover:shadow-[#355872]/10 hover:scale-[1.02]"
           >
             <div className="flex-grow">
               <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-2">{project.title}</h3>
