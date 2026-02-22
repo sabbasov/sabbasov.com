@@ -5,21 +5,21 @@ import { Github } from 'lucide-react';
 
 const projectsData = [
   {
-    title: 'Airport Traffic Analyzer',
-    description: 'A JavaScript-driven tool visualizing airport logistics and flight data patterns. Focuses on data-driven insights for aviation systems.',
-    tags: ['JavaScript', 'Data Viz', 'Logistics'],
+    title: 'Airport Traffic Analyzer',  
+    description: 'A tool that visualizes flight data patterns and airport logistics. I built this to get better at finding data-driven insights for aviation systems.',
+    tags: ['JavaScript', 'Data Visualization', 'Aviation'],
     link: 'https://github.com/sabbasov/airport-traffic-analyzer',
   },
   {
-    title: 'Wildwood SQL Architecture',
-    description: 'A comprehensive 11-table relational database design for property management. Features automated business rules for rent, maintenance, and invoicing.',
-    tags: ['SQL', 'Database Design', 'Architecture'],
+    title: 'Wildwood Property Database',
+    description: 'A relational database design with 11 tables built to manage property data. It handles everything from rent and invoicing to maintenance schedules using SQL logic.',
+    tags: ['SQL', 'Relational Databases', 'Database Design'],
     link: '',
   },
   {
     title: 'Foodie Social Network',
-    description: 'A full-stack Flask application optimized for community data sharing and interactive content management.',
-    tags: ['Flask', 'Python', 'Full-stack'],
+    description: 'A full-stack social platform built with Flask where users can share and manage food-related content. It features a custom database to handle community posts and interactions.',
+    tags: ['Flask', 'Python', 'Web Development'],
     link: 'https://github.com/sabbasov/foodie-social-network',
   },
 ];
