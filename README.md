@@ -1,33 +1,35 @@
-# sabbbasov.com | Professional Portfolio
+# sabbasov.com
 
-This is the repository for my personal portfolio and digital garden. It serves as a central hub for my projects in Mathematics, Computer Science, and Aviation Data Analytics.
+A personal portfolio website showcasing my work in Mathematics and Computer Science.
 
-## The Tech Stack
-- **Framework:** Next.js (App Router)
-- **Styling:** Tailwind CSS (Class-based Dark Mode)
+## Tech Stack
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS 4
 - **Animations:** Framer Motion
+- **Theme:** next-themes for dark mode
 - **Typography:** Geist Sans & Geist Mono
-- **Deployment:** Vercel
-- **Icons:** Lucide-react
+- **Icons:** Lucide React
+- **Analytics:** Vercel Analytics & Speed Insights
 
 ## Project Structure
-- `/app`: Core page logic and theme configuration.
-- `/components`: Modular UI architecture (Hero, Experience, Education, Projects, Aviation, Skills).
-- `/public`: Assets and documentation.
+- `/app`: Main application with components and page logic
+- `/app/components`: UI components (Hero, Experience, Education, Projects, Aviation, Skills, Contact)
+- `/hooks`: Custom React hooks
+- `/lib`: Utility functions
 
-## Key Features
-- **Responsive Architecture:** Fully optimized for all device breakpoints.
-- **Dynamic Theme Engine:** Custom-built light/dark mode toggle with smooth framer-motion transitions.
-- **Quantitative Hero:** Focused messaging targeting Data Infrastructure and Aerospace Logistics.
-- **Integrated Systems Grid:** Showcasing SQL, Python, and JavaScript projects with direct GitHub integration.
-- **Professional Timeline:** A compact, scannable history of international and domestic operations.
+## Features
+- Responsive design for all screen sizes
+- Dark mode toggle with smooth transitions
+- Sections for experience, education, projects, aviation, and skills
+- Contact form
+- Scroll-to-top button
 
-## 📖 Local Development
-To run this project in your local environment:
+## Local Development
 
-1. Clone the repo:
+1. Clone the repository:
    ```bash
-   git clone [https://github.com/yourusername/sabbbasov.com.git](https://github.com/yourusername/sabbbasov.com.git)
+   git clone https://github.com/yourusername/sabbasov.com.git
    ```
 2. Install dependencies:
    ```bash
@@ -37,6 +39,7 @@ To run this project in your local environment:
    ```bash
    npm run dev
    ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-# 📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+## License
+MIT License - see the LICENSE file for details.
