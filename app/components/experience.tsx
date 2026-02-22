@@ -8,7 +8,7 @@ const experienceData = [
     company: 'Bon Appétit',
     period: 'Aug 2025 – Present',
     description:
-      'Directing a team of 5-6 staff during high-volume service windows to ensure operational efficiency. Managing real-time communication and task delegation to maintain service flow and customer satisfaction.',
+      'I lead a team of 5–6 staff during busy service hours. My role is to coordinate tasks and keep communication clear so that everything runs smoothly and guests are taken care of. I focus on solving problems in real-time and making sure our team hits our safety and service goals every shift.',
   },
   {
     role: 'Data Analyst Intern',
