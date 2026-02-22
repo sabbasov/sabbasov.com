@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/resume',
-        destination: 'resume.pdf',
+        destination: '/sabbasov.com/resume.pdf',
         permanent: true,
       },
       {
