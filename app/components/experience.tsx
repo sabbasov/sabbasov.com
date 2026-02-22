@@ -15,21 +15,21 @@ const experienceData = [
     company: 'Innovation & Digital Development Agency',
     period: 'Jul 2024 – Aug 2024',
     description:
-      'Processed datasets for 100,000+ users for national digital infrastructure. Applied SQL and Python to analyze government-level data while ensuring strict confidentiality.',
+      'I worked with datasets for over 100,000 users as part of Azerbaijan’s national digital infrastructure. Using SQL and Python, I analyzed government-level data to help improve system performance while maintaining strict security and confidentiality.',
   },
   {
     role: 'Technical Support Assistant',
     company: 'The College of Idaho',
     period: 'Sep 2024 – May 2025',
     description:
-      'Troubleshot technical issues for students and faculty. Provided enterprise-level support for Microsoft applications and documented technical workflows.',
+      'I helped students and faculty solve technical problems with their devices and software. I supported Microsoft applications across campus and wrote down step-by-step guides (workflows) to make sure common issues could be fixed faster in the future.',
   },
   {
     role: 'Teacher Assistant',
     company: 'The College of Idaho',
     period: 'Feb 2025 – May 2025',
     description:
-      'Assisted in delivering Computer Science lessons. Supported students with complex coding issues and provided feedback on programming assignments.',
+      'I helped teach Computer Science lessons and supported students as they worked through difficult coding projects. I spent most of my time debugging code with students and giving them feedback on their assignments to help them improve their programming skills.',
   },
 ];
 
