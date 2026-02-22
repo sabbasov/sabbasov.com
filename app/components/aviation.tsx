@@ -14,7 +14,7 @@ const Aviation = () => {
         >
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">Aviation Passion</h2>
           <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
-            I’ve always been fascinated by how planes get from one place to another, but my real interest lies in the math behind the scenes. To me, a flight path is a puzzle to solve, and every delay is a chance to learn how systems can work better. As a student of Math and Computer Science, I’m working to combine my studies with my love for aviation to help make flight logistics a little more efficient for everyone.
+            I’ve always been fascinated by how planes get from A to B, but my real interest is the math behind the scenes. To me, a flight path is a puzzle to solve, and every delay is an opportunity to see how systems can work better. As a Math and Computer Science student, I want to combine what I'm learning with my love for aviation to help make logistics a little more efficient.
           </p>
         </motion.div>
       </div>
