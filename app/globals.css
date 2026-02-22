@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-white text-zinc-800 font-sans dark:bg-zinc-950 dark:text-zinc-300;
+  }
+}
