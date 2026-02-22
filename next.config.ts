@@ -13,7 +13,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/resume',
-        destination: '/resume.pdf', // Ensure this file is in your /public folder
+        destination: 'resume.pdf',
         permanent: true,
       },
       {
