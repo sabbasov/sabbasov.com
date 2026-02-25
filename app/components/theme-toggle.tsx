@@ -29,7 +29,12 @@ const ThemeToggle = () => {
   if (!mounted) {
     return <div className="relative w-5 h-5" />;
   }
-displayTheme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
+
+  // Sun icon SVG
+  const SunIcon = () => (
+    <svg
+      className={`h-5 w-5 absolute transition-all duration-300 ${
+        displayTheme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
       }`}
       fill="currentColor"
       viewBox="0 0 24 24"
@@ -63,12 +68,7 @@ displayTheme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-
   const SystemIcon = () => (
     <svg
       className={`h-5 w-5 absolute transition-all duration-300 ${
-        displayT
-  // System icon SVG (monitor)
-  const SystemIcon = () => (
-    <svg
-      className={`h-5 w-5 absolute transition-all duration-300 ${
-        theme === 'system' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
+        displayTheme === 'system' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
       }`}
       fill="none"
       stroke="currentColor"
