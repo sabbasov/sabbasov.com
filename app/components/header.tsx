@@ -44,13 +44,13 @@ const Header = () => {
               ))}
             </nav>
             <div className="hidden md:flex items-center gap-3">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <a href="https://github.com/sabbasov/sabbasov.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
                 <Github size={18} />
               </a>
             </div>
             <div className="flex items-center gap-4 md:hidden">
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-zinc-600 dark:text-zinc-400"
