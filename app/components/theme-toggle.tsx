@@ -1,43 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
 
 type Theme = 'light' | 'dark' | 'system';
 
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<Theme>('system');
+  const { theme, setTheme } = useTheme();
 
-  // Load theme from localStorage on mount
   useEffect(() => {
     setMounted(true);
-    const saved = localStorage.getItem('theme') as Theme | null;
-    if (saved) {
-      setTheme(saved);
-      applyTheme(saved);
-    }
   }, []);
-
-  // Apply theme to DOM and persist to localStorage
-  const applyTheme = (newTheme: Theme) => {
-    localStorage.setItem('theme', newTheme);
-    const root = document.documentElement;
-
-    if (newTheme === 'system') {
-      root.style.colorScheme = 'light dark';
-      root.removeAttribute('data-theme');
-    } else {
-      root.style.colorScheme = newTheme;
-      root.setAttribute('data-theme', newTheme);
-    }
-  };
 
   const toggleTheme = () => {
     const themes: Theme[] = ['dark', 'light', 'system'];
-    const nextIdx = (themes.indexOf(theme) + 1) % themes.length;
+    const currentTheme = (theme || 'system') as Theme;
+    const nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
     const nextTheme = themes[nextIdx];
     setTheme(nextTheme);
-    applyTheme(nextTheme);
   };
 
   if (!mounted) {

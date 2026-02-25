@@ -4,7 +4,13 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    color-scheme: light dark;
   }
+  
+  html * {
+    @apply transition-colors duration-300 ease-in-out;
+  }
+  
   body {
     @apply bg-white text-zinc-800 font-sans dark:bg-zinc-950 dark:text-zinc-300;
   }
