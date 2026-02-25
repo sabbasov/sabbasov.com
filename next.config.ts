@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  // Set up the professional redirects
+  // Redirects send the user to a NEW URL (browser address changes)
   async redirects() {
     return [
       {
@@ -28,7 +28,14 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  // Allow access to remote image placeholder.
+  async rewrites() {
+    return [
+      {
+        source: '/aeroguard/:path*',
+        destination: 'https://aeroguard-gamma.vercel.app/:path*',
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
@@ -40,8 +47,6 @@ const nextConfig: NextConfig = {
     ],
   },
   output: 'standalone',
-  // Note: 'framer-motion' usually doesn't need transpiling in newer Next.js versions, 
-  // but keeping it if your specific environment requires it.
   transpilePackages: ['motion'],
   webpack: (config, { dev }) => {
     if (dev && process.env.DISABLE_HMR === 'true') {
