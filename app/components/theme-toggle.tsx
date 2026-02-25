@@ -8,28 +8,28 @@ type Theme = 'light' | 'dark' | 'system';
 const ThemeToggle = () => {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const [displayTheme, setDisplayTheme] = useState<Theme>('system');
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    if (theme) {
+      setDisplayTheme(theme as Theme);
+    }
+  }, [theme]);
 
   const toggleTheme = () => {
     const themes: Theme[] = ['dark', 'light', 'system'];
-    const currentTheme = (theme || 'system') as Theme;
+    const currentTheme = displayTheme;
     const nextIdx = (themes.indexOf(currentTheme) + 1) % themes.length;
     const nextTheme = themes[nextIdx];
+    console.log('Toggling theme from', currentTheme, 'to', nextTheme);
     setTheme(nextTheme);
   };
 
   if (!mounted) {
     return <div className="relative w-5 h-5" />;
   }
-
-  // Sun icon SVG
-  const SunIcon = () => (
-    <svg
-      className={`h-5 w-5 absolute transition-all duration-300 ${
-        theme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
+displayTheme === 'light' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 rotate-90 scale-75'
       }`}
       fill="currentColor"
       viewBox="0 0 24 24"
@@ -50,7 +50,7 @@ const ThemeToggle = () => {
   const MoonIcon = () => (
     <svg
       className={`h-5 w-5 absolute transition-all duration-300 ${
-        theme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'
+        displayTheme === 'dark' ? 'opacity-100 rotate-0 scale-100' : 'opacity-0 -rotate-90 scale-75'
       }`}
       fill="currentColor"
       viewBox="0 0 24 24"
@@ -59,6 +59,11 @@ const ThemeToggle = () => {
     </svg>
   );
 
+  // System icon SVG (monitor)
+  const SystemIcon = () => (
+    <svg
+      className={`h-5 w-5 absolute transition-all duration-300 ${
+        displayT
   // System icon SVG (monitor)
   const SystemIcon = () => (
     <svg
@@ -83,7 +88,7 @@ const ThemeToggle = () => {
       onClick={toggleTheme}
       className="relative w-5 h-5 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300"
       aria-label="Toggle theme"
-      title={`Current: ${theme} • Click to cycle`}
+      title={`Current: ${displayTheme} • Click to cycle`}
     >
       <SunIcon />
       <MoonIcon />

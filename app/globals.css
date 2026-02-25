@@ -7,11 +7,12 @@
     color-scheme: light dark;
   }
   
-  html * {
-    @apply transition-colors duration-300 ease-in-out;
-  }
-  
   body {
     @apply bg-white text-zinc-800 font-sans dark:bg-zinc-950 dark:text-zinc-300;
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+  }
+  
+  * {
+    transition: background-color 300ms ease-in-out, border-color 300ms ease-in-out, color 300ms ease-in-out;
   }
 }
