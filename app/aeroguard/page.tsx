@@ -80,7 +80,7 @@ const AeroGuardPage = () => {
                 It also cross-references applicable Airworthiness Directives for the aircraft. ADs are FAA-mandated safety inspections or fixes — if one applies to your serial number, you need to comply with it. AeroGuard checks whether the specific serial number is actually affected, not just the model in general.
               </p>
               <p>
-                Based on applicable ADs, failed-part findings, and excess wear reports, the tool gives a risk score from 0 to 100. It’s meant to give you a quick sense of an aircraft’s maintenance picture before you dig deeper.
+                Based on applicable ADs, failed-part findings, and excess wear reports, the tool gives a risk score from 0 to 100. It's meant to give you a quick sense of an aircraft's maintenance picture before you dig deeper.
               </p>
             </div>
           </motion.div>
@@ -94,10 +94,13 @@ const AeroGuardPage = () => {
             <h2 className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">The data pipeline</h2>
             <div className="mt-4 space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed">
               <p>
-                The raw FAA data doesn’t come in a format that’s easy to work with. I downloaded the SDR and AD files directly from FAA sources, wrote Python scripts to parse them, and loaded everything into a Supabase (Postgres) database. The main tools were <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">httpx</span>, <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">openpyxl</span>, and <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">pymupdf</span> for fetching, reading spreadsheets, and parsing PDFs respectively.
+                The raw FAA data doesn't come in a developer-friendly format. I downloaded SDR files and AD spreadsheets directly from FAA sources, then wrote Python scripts to parse and load them into a Supabase (Postgres) database. The main tools were <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">httpx</span>, <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">openpyxl</span>, and <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">pymupdf</span> — for HTTP requests, reading Excel files, and parsing PDFs.
               </p>
               <p>
-                AD applicability analysis — figuring out whether a specific serial number is affected — is done with local regex and heuristic pattern matching first. If confidence falls below 80%, it falls back to Gemini 2.5 Flash Lite. This keeps it fast and cheap for clear-cut cases while still handling the ambiguous ones. All pipeline scripts are idempotent, so they’re safe to re-run without creating duplicate data.
+                One thing that took time was extracting hyperlinks from the AD spreadsheet. The cell values were just display text — the actual FAA document URLs were stored separately as embedded hyperlinks and had to be pulled with <span className="font-mono text-sm text-zinc-700 dark:text-zinc-300">cell.hyperlink.target</span> in openpyxl.
+              </p>
+              <p>
+                AD applicability — figuring out whether a specific serial number is actually affected — is done with local regex and heuristic pattern matching first. I built six matching strategies covering explicit serial number ranges, fleet-wide applicability, exclusion clauses, and complex hyphenated ranges. If confidence falls below 80%, the analysis falls back to Gemini 2.5 Flash Lite. This keeps it fast for clear-cut cases while still handling ambiguous ones. All scripts are idempotent, so they're safe to re-run without creating duplicate records.
               </p>
             </div>
           </motion.div>
@@ -128,11 +131,35 @@ const AeroGuardPage = () => {
             className="mt-6 bg-white dark:bg-zinc-900/50 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800"
           >
             <h2 className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">What I learned</h2>
-            <ul className="mt-4 space-y-2 text-zinc-600 dark:text-zinc-400 leading-relaxed list-none">
-              <li className="flex gap-2"><span className="text-zinc-400">—</span>Working with real government data that wasn’t designed for developers. FAA files come in a mix of formats and the structure isn’t always consistent.</li>
-              <li className="flex gap-2"><span className="text-zinc-400">—</span>Building a processing pipeline that handles partial and missing data without breaking — a lot of records are incomplete and you have to account for that.</li>
-              <li className="flex gap-2"><span className="text-zinc-400">—</span>Thinking through the logic of serial-number-level AD applicability, which is more nuanced than it sounds. The same AD can apply to some serial numbers but not others based on manufacture date ranges or retrofit status.</li>
-              <li className="flex gap-2"><span className="text-zinc-400">—</span>Knowing when to use an LLM as a fallback versus doing it deterministically. For structured data with clear patterns, regex is faster, cheaper, and more predictable.</li>
+            <ul className="mt-4 space-y-3 text-zinc-600 dark:text-zinc-400 leading-relaxed list-none">
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                The official Python Supabase SDK didn't work on my Python version, so I dropped it and called the PostgREST API directly with <span className="font-mono text-sm text-zinc-500 dark:text-zinc-400">httpx</span>. That actually turned out cleaner — fewer moving parts.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                My first SDR parser was written against an assumed file format. It parsed zero records. I had to go back, read the actual FAA text file structure line by line, and rewrite the parser from scratch. Assumptions about data formats are usually wrong.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                Database column names between the Python script and the Supabase schema were out of sync (camelCase vs snake_case). Fixed it with a schema migration, but it was a good reminder to agree on naming conventions before you start loading data.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                AD analysis with an LLM for every record was too slow — up to 8 minutes per aircraft with 50+ ADs. Building local regex matching first brought that down to a few seconds and made the LLM fallback the exception, not the rule.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                Gemini model names change. <span className="font-mono text-sm text-zinc-500 dark:text-zinc-400">gemini-2.0-flash</span> stopped working after I had already built around it. Always check model availability before you build a dependency on a specific version.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                The FAA AD spreadsheet had clickable links in the cells, but <span className="font-mono text-sm text-zinc-500 dark:text-zinc-400">cell.value</span> only gave me the display text. The actual URL was in <span className="font-mono text-sm text-zinc-500 dark:text-zinc-400">cell.hyperlink.target</span> — not obvious until you look at how openpyxl handles hyperlinks.
+              </li>
+              <li className="flex gap-2">
+                <span className="text-zinc-400 shrink-0">—</span>
+                Anon keys and service-role keys in Supabase do different things. API routes were silently failing because I was using the wrong one. Keeping a separate admin client for server-side operations fixed it.
+              </li>
             </ul>
           </motion.div>
         </div>
