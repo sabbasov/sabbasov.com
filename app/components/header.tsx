@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import ThemeToggle from './theme-toggle';
 
 const navItems = [
@@ -16,6 +17,8 @@ const navItems = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const prefix = pathname === '/' ? '' : '/';
 
   return (
     <>
@@ -43,7 +46,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href={`${prefix}${item.href}`}
                   className="text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors duration-300"
                 >
                   {item.name}
@@ -87,7 +90,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <a
                   key={item.name}
-                  href={item.href}
+                  href={`${prefix}${item.href}`}
                   onClick={() => setIsOpen(false)}
                   className="text-lg font-medium text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300"
                 >

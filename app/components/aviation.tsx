@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const Aviation = () => {
   return (
@@ -14,8 +15,16 @@ const Aviation = () => {
         >
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">Aviation Passion</h2>
           <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
-            I’ve always been fascinated by how planes get from A to B, but my real interest is the math behind the scenes. To me, a flight path is a puzzle to solve, and every delay is an opportunity to see how systems can work better. As a Math and Computer Science student, I want to combine what I'm learning with my love for aviation to help make logistics a little more efficient.
+            I’ve always been drawn to aviation — not just flying, but the data side of it. How aircraft get certified, tracked, and maintained. That interest led me to build AeroGuard, a tool that lets you look up any FAA-registered aircraft by tail number and see its maintenance history and applicable airworthiness directives.
           </p>
+          <div className="mt-8">
+            <Link
+              href="/aeroguard"
+              className="inline-block bg-[#355872] text-white font-medium px-8 py-3 rounded-lg hover:bg-[#2a4356] transition-colors duration-300 shadow-lg shadow-[#355872]/20"
+            >
+              View Project →
+            </Link>
+          </div>
         </motion.div>
       </div>
     </section>
