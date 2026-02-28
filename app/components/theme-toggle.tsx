@@ -40,7 +40,7 @@ export default function ThemeToggle() {
   };
 
   const handleClick = () => {
-    const themesList: Theme[] = ['light', 'dark', 'system'];
+    const themesList: Theme[] = ['system', 'light', 'dark'];
     const currentIndex = themesList.indexOf(theme);
     const nextIndex = (currentIndex + 1) % themesList.length;
     const nextTheme = themesList[nextIndex];
@@ -51,13 +51,13 @@ export default function ThemeToggle() {
 
 
   if (!mounted) {
-    return <div className="w-5 h-5" />;
+    return <div className="w-9 h-9" />;
   }
 
   return (
     <button
       onClick={handleClick}
-      className="relative w-5 h-5 flex items-center justify-center text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300"
+      className="relative w-9 h-9 flex items-center justify-center rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-all duration-300"
       aria-label="Toggle theme"
       title={`Current: ${theme}`}
     >
