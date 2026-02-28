@@ -60,11 +60,6 @@ const nextConfig: NextConfig = {
         destination: 'https://github.com/sabbasov',
         permanent: true,
       },
-      {
-        source: '/aeroguard',
-        destination: 'https://aeroguard-gamma.vercel.app/',
-        permanent: true,
-      },
     ];
   },
   // Allow access to remote image placeholder.
