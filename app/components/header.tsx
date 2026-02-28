@@ -51,7 +51,8 @@ const Header = () => {
               ))}
             </nav>
             <div className="hidden md:flex items-center gap-4">
-              <a href="https://github.com/sabbasov/sabbasov.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
+              <ThemeToggle />
+              <a href="https://github.com/sabbasov/sabbasov.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center w-9 h-9 rounded-xl bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-white transition-all duration-300">
                 <Github size={20} />
               </a>
             </div>
@@ -97,6 +98,7 @@ const Header = () => {
                   <Github size={20} />
                   Source Code
                 </a>
+                <ThemeToggle />
             </nav>
           </motion.div>
         )}
