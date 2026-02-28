@@ -47,7 +47,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/resume',
-        destination: 'https://amobvdltcwgicppocpnn.supabase.co/storage/v1/object/sign/resume/resume.pdf?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV9jYTU5ZTBjMi0wZjE0LTQwZWUtOTUwNC02NDc2Y2ZkMTFkNGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJyZXN1bWUvcmVzdW1lLnBkZiIsImlhdCI6MTc3MjAwMTg3MSwiZXhwIjoxNzcyNjA2NjcxfQ.8XgEFRAmYqpoNPiXOtcUfszNzbc0ozYa0k9eDKkvu28',
+        destination: 'resume.pdf',
         permanent: true,
       },
       {
