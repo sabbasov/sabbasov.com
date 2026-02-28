@@ -5,3 +5,8 @@ coverage/
 *.log
 .env*
 !.env.example
+logo.py
+personal_logo_master.svg
+.venv/
+__pycache__/
+*.pyc
