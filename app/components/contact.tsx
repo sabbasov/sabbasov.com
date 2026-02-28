@@ -22,7 +22,7 @@ const Contact = () => {
               <Mail size={20} />
               <span>hello@sabbasov.com</span>
             </a>
-            <a href="https://linkedin.sabbasov.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-custom-blue dark:hover:text-custom-blue transition-colors duration-300">
+            <a href="https://www.linkedin.com/in/sabuhiabs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-custom-blue dark:hover:text-custom-blue transition-colors duration-300">
               <Linkedin size={20} />
               <span>linkedin.sabbasov.com</span>
             </a>

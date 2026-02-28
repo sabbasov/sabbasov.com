@@ -12,7 +12,7 @@ const Footer = () => {
           <p className="text-sm text-zinc-500 dark:text-zinc-500">
             &copy; {currentYear} Sabuhi Abbasov. All Rights Reserved.
           </p>
-          <a href="https://github.sabbasov.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
+          <a href="https://github.com/sabbasov" target="_blank" rel="noopener noreferrer" className="text-zinc-500 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
             <Github size={24} />
           </a>
         </div>
