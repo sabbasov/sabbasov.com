@@ -44,7 +44,7 @@ const Header = () => {
                     <path d="M 170.65618658416722,0.0 Q 87.21915399469356,109.36935979384127 32.370317340852104,103.9270938871789 Q -22.478519312989345,98.48482798051654 -66.64834899979981,75.92602506923275 Q -110.81817868661027,53.36722215794895 -122.85991431876292,-5.798994246834933 Q -134.90164995091558,-64.96521065161882 -85.6272750278971,-112.1188363330943 Q -36.352900104878614,-159.27246201456978 9.977554461501427,-114.94023601414332 Q 56.30800902788147,-70.60801001371685 113.48209780602434,-35.304005006858425 Z" fill="url(#logo-grad-header)" stroke="none" />
                   </svg>
                 </span>
-                <span>Sabuhi Abbasov</span>
+                <span>sabbasov</span>
               </Link>
               <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] uppercase tracking-wider font-bold">
                 <span className="relative flex h-2 w-2">

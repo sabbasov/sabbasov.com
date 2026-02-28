@@ -8,7 +8,7 @@ import './globals.css';
 
 
 export const metadata: Metadata = {
-  title: 'Sabuhi Abbasov | Engineering Data & Logistics',
+  title: 'Sabuhi Abbasov',
   description: 'Mathematics & Computer Science student at The College of Idaho. International Intern. Operations Leader.',
 };
 
