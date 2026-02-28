@@ -1,6 +1,11 @@
 # sabbasov.com
 
+
 A personal portfolio website showcasing my work in Mathematics and Computer Science.
+
+- Custom SVG favicon and logo are used throughout the site.
+- The logo was generated using the included `logo.py` script (not needed for deployment).
+- Download my resume at [sabbasov.com/resume](https://sabbasovcom.vercel.app/resume) or from `public/resume.pdf`.
 
 ## Tech Stack
 - **Framework:** Next.js 15 with App Router
