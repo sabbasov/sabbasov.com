@@ -11,9 +11,11 @@ export default function ThemeToggle() {
   useEffect(() => {
     setMounted(true);
     // Load saved theme from localStorage
-    const saved = (localStorage.getItem('theme') as Theme) || 'system';
-    setTheme(saved);
-    applyTheme(saved);
+    const saved = localStorage.getItem('theme');
+    const validThemes: Theme[] = ['light', 'dark', 'system'];
+    const resolvedTheme: Theme = validThemes.includes(saved as Theme) ? (saved as Theme) : 'system';
+    setTheme(resolvedTheme);
+    applyTheme(resolvedTheme);
   }, []);
 
   const applyTheme = (newTheme: Theme) => {
