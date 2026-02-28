@@ -27,10 +27,17 @@ const Header = () => {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 border-b border-zinc-200 dark:border-zinc-800">
-            <div className="flex-shrink-0">
+            <div className="flex items-center gap-4">
               <Link href="/" className="text-xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">
                 sabbasov
               </Link>
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] uppercase tracking-wider font-bold">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for Internships
+              </div>
             </div>
             <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-zinc-600 dark:text-zinc-400">
               {navItems.map((item) => (
@@ -43,14 +50,12 @@ const Header = () => {
                 </a>
               ))}
             </nav>
-            <div className="hidden md:flex items-center gap-3">
-              {/* <ThemeToggle /> */}
-              <a href="https://github.com/sabbasov/sabbasov.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300">
-                <Github size={18} />
+            <div className="hidden md:flex items-center gap-4">
+              <a href="https://github.com/sabbasov/sabbasov.com" target="_blank" rel="noopener noreferrer" className="text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
+                <Github size={20} />
               </a>
             </div>
             <div className="flex items-center gap-4 md:hidden">
-              {/* <ThemeToggle /> */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-zinc-600 dark:text-zinc-400"
@@ -71,6 +76,13 @@ const Header = () => {
             className="md:hidden fixed top-16 left-0 right-0 z-40 bg-white dark:bg-zinc-950 border-b border-zinc-200 dark:border-zinc-800"
           >
             <nav className="flex flex-col items-center gap-6 py-8">
+              <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-[10px] uppercase tracking-wider font-bold mb-4">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                Available for Internships
+              </div>
               {navItems.map((item) => (
                 <a
                   key={item.name}
