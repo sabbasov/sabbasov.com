@@ -1,52 +1,22 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-
-type Theme = 'light' | 'dark' | 'system';
+import { useTheme } from 'next-themes';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<Theme>('system');
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
-    // Load saved theme from localStorage
-    const saved = localStorage.getItem('theme');
-    const validThemes: Theme[] = ['light', 'dark', 'system'];
-    const resolvedTheme: Theme = validThemes.includes(saved as Theme) ? (saved as Theme) : 'system';
-    setTheme(resolvedTheme);
-    applyTheme(resolvedTheme);
   }, []);
 
-  const applyTheme = (newTheme: Theme) => {
-    const html = document.documentElement;
-    
-    // Save to localStorage
-    localStorage.setItem('theme', newTheme);
-    
-    // Update HTML class for dark mode
-    if (newTheme === 'dark') {
-      html.classList.add('dark');
-    } else {
-      html.classList.remove('dark');
-    }
-    
-    // Update color-scheme
-    if (newTheme === 'system') {
-      html.style.colorScheme = 'light dark';
-    } else {
-      html.style.colorScheme = newTheme;
-    }
-  };
-
   const handleClick = () => {
-    const themesList: Theme[] = ['system', 'light', 'dark'];
-    const currentIndex = themesList.indexOf(theme);
+    const themesList = ['system', 'light', 'dark'];
+    const currentIndex = themesList.indexOf(theme || 'system');
     const nextIndex = (currentIndex + 1) % themesList.length;
     const nextTheme = themesList[nextIndex];
-    console.log(`Switching from ${theme} to ${nextTheme}`);
     setTheme(nextTheme);
-    applyTheme(nextTheme);
   };
 
 
