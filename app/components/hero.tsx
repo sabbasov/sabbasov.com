@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { Github, MapPin, GraduationCap } from 'lucide-react';
+import { Github, MapPin, GraduationCap, Download } from 'lucide-react';
 
 const techStack = [
   {
@@ -136,15 +136,27 @@ const Hero = () => {
                 Explore My Projects →
               </a>
               
-              <a
-                href="https://github.com/sabbasov"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-8 py-4 rounded-xl hover:border-[#355872] hover:text-[#355872] dark:hover:border-[#276DC3] dark:hover:text-[#276DC3] transition-all duration-300"
-              >
-                <Github size={20} />
-                View GitHub
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <a
+                  href="https://github.com/sabbasov"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-6 py-4 rounded-xl hover:border-[#355872] hover:text-[#355872] dark:hover:border-[#276DC3] dark:hover:text-[#276DC3] transition-all duration-300"
+                >
+                  <Github size={20} />
+                  GitHub
+                </a>
+                
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 border-2 border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 font-medium px-6 py-4 rounded-xl hover:border-[#355872] hover:text-[#355872] hover:bg-zinc-50 dark:hover:border-[#276DC3] dark:hover:text-[#276DC3] dark:hover:bg-zinc-750 transition-all duration-300"
+                >
+                  <Download size={20} />
+                  Resume
+                </a>
+              </div>
             </motion.div>
           </div>
 
