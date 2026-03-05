@@ -15,14 +15,20 @@ const Aviation = () => {
         >
           <h2 className="text-3xl font-bold text-zinc-900 dark:text-white font-mono tracking-tighter">Aviation Passion</h2>
           <p className="mt-6 text-lg text-zinc-400 leading-relaxed">
-            I’ve always been drawn to aviation — not just flying, but the data side of it. How aircraft get certified, tracked, and maintained. That interest led me to build AeroGuard, a tool that lets you look up any FAA-registered aircraft by tail number and see its maintenance history and applicable airworthiness directives.
+            I've always been drawn to aviation — not just flying, but the data side of it. How aircraft get certified, tracked, and maintained. This interest led me to build two aviation data projects: AeroGuard for aircraft safety research and the Airport Traffic Analyzer for flight delay prediction using machine learning.
           </p>
-          <div className="mt-8">
+          <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/aeroguard"
               className="inline-block bg-[#355872] text-white font-medium px-8 py-3 rounded-lg hover:bg-[#2a4356] transition-colors duration-300 shadow-lg shadow-[#355872]/20"
             >
-              View Project →
+              AeroGuard →
+            </Link>
+            <Link
+              href="/airport-traffic-analyzer"
+              className="inline-block bg-[#276DC3] text-white font-medium px-8 py-3 rounded-lg hover:bg-[#1e5a9e] transition-colors duration-300 shadow-lg shadow-[#276DC3]/20"
+            >
+              Traffic Analyzer →
             </Link>
           </div>
         </motion.div>
