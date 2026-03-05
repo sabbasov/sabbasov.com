@@ -60,11 +60,7 @@ const techStack = [
   {
     name: 'Flask',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-6 h-6">
-        <path fill="#000" d="M38.6 80.2c-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7h50.8c1.5 0 2.7 1.2 2.7 2.7s-1.2 2.7-2.7 2.7H38.6z" />
-        <path fill="#000" d="M43.4 74.8v-19c0-6.6 5.4-12 12-12h17.2c6.6 0 12 5.4 12 12v19H43.4z" />
-        <path fill="#000" d="M73.3 44.8V25.3h-18.6v19.5h-8.1V17.2c0-2.2 1.8-4 4-4h26.8c2.2 0 4 1.8 4 4v27.6h-8.1z" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" alt="Flask" className="w-6 h-6" />
     ),
   },
 ];
