@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect } from 'react';
-import Aviation from './components/aviation';
 import Experience from './components/experience';
 import Education from './components/education';
 import Footer from './components/footer';
@@ -25,7 +24,6 @@ export default function Home() {
         <Experience />
         <Education />
         <Projects />
-        <Aviation />
         <Skills />
         <Contact />
       </main>

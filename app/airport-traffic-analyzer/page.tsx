@@ -22,63 +22,43 @@ const techStack = [
   {
     name: 'R Shiny',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <path fill="#276DC3" d="M18.8 71.1c0-25.9 21-46.9 46.9-46.9s46.9 21 46.9 46.9-21 46.9-46.9 46.9-46.9-21-46.9-46.9z" />
-        <path fill="#fff" d="M45.4 56.8c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5zm20.8 0c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5zm20.8 0c0 1.4-1.1 2.5-2.5 2.5s-2.5-1.1-2.5-2.5 1.1-2.5 2.5-2.5 2.5 1.1 2.5 2.5z" />
-        <path fill="#fff" d="M65.8 82.8H49.9c-1.4 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5h15.9c1.4 0 2.5 1.1 2.5 2.5s-1.1 2.5-2.5 2.5z" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Shiny_hex_logo.svg" alt="R Shiny" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'scikit-learn',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <path fill="#F7931E" d="M20.8 49.6c-2.2-2.2-2.2-5.8 0-8s5.8-2.2 8 0l12.7 12.7c2.2 2.2 2.2 5.8 0 8s-5.8 2.2-8 0L20.8 49.6zm65.6 0c2.2-2.2 5.8-2.2 8 0s2.2 5.8 0 8L81.7 70.3c-2.2 2.2-5.8 2.2-8 0s-2.2-5.8 0-8l12.7-12.7zM64 28.8c3.1 0 5.6 2.5 5.6 5.6v18c0 3.1-2.5 5.6-5.6 5.6s-5.6-2.5-5.6-5.6v-18c0-3.1 2.5-5.6 5.6-5.6zm0 41.6c3.1 0 5.6 2.5 5.6 5.6v18c0 3.1-2.5 5.6-5.6 5.6s-5.6-2.5-5.6-5.6V76c0-3.1 2.5-5.6 5.6-5.6z" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg" alt="scikit-learn" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'tidymodels',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <circle cx="64" cy="64" r="40" fill="#276DC3" />
-        <path fill="#fff" d="M44 54h40v20H44z" />
-      </svg>
+      <img src="https://tidymodels.tidymodels.org/logo.png" alt="tidymodels" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'Plotly',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <path fill="#3F4F75" d="M32 32h64v64H32z" />
-        <path fill="#00D4AA" d="M40 50h48v28H40z" />
-        <circle cx="64" cy="64" r="8" fill="#119DFF" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Plotly-logo.png" alt="Plotly" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'pandas',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <path fill="#150458" d="M47.4 24v80h8.4V24h-8.4zm25.2 0v80h8.4V24h-8.4zM30.2 40v24h8.4V40h-8.4zm50.4 0v24h8.4V40h-8.4zM72.2 64v40h8.4V64h-8.4z" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Pandas_logo.svg" alt="pandas" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'Aviation Stack API',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0" fill="currentColor">
-        <path d="M64 20L45 45h38L64 20zm0 88L83 83H45l19 25zm-30-44L10 64l24 0V64zm60 0h24V64l-24 0z" />
-      </svg>
+      <img src="https://assets.apilayer.com/api_listings/aviationstack.png" alt="Aviation Stack API" className="w-4 h-4 shrink-0" />
     ),
   },
   {
     name: 'ShinyApps.io',
     logo: (
-      <svg viewBox="0 0 128 128" className="w-4 h-4 shrink-0">
-        <circle cx="64" cy="64" r="32" fill="#276DC3" />
-        <path fill="#fff" d="M48 56h32v16H48z" />
-      </svg>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Shiny_hex_logo.svg" alt="ShinyApps.io" className="w-4 h-4 shrink-0" />
     ),
   },
 ];
