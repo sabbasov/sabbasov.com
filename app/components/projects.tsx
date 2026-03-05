@@ -6,9 +6,9 @@ import { Github } from 'lucide-react';
 const projectsData = [
   {
     title: 'Airport Traffic Analyzer',  
-    description: 'A tool that visualizes flight data patterns and airport logistics. I built this to get better at finding data-driven insights for aviation systems.',
-    tags: ['JavaScript', 'Data Visualization', 'Aviation'],
-    link: 'https://github.com/sabbasov/airport-traffic-analyzer',
+    description: 'A real-time flight delay monitoring and prediction system built with Python, R, and machine learning. Features an interactive Shiny dashboard and Random Forest model.',
+    tags: ['Python', 'R Shiny', 'Machine Learning'],
+    link: '/airport-traffic-analyzer',
   },
   {
     title: 'Wildwood Property Database',
@@ -63,9 +63,15 @@ const Projects = () => {
                 </span>
               ))}
               {project.link && (
-                <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-auto text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
-                  <Github size={20} />
-                </a>
+                project.link.startsWith('/') ? (
+                  <a href={project.link} className="ml-auto text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
+                    →
+                  </a>
+                ) : (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-auto text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300">
+                    <Github size={20} />
+                  </a>
+                )
               )}
             </div>
           </motion.div>
