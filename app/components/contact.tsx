@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Linkedin } from 'lucide-react';
+import { Mail, Linkedin, Download } from 'lucide-react';
 
 const Contact = () => {
   return (
@@ -25,6 +25,10 @@ const Contact = () => {
             <a href="https://www.linkedin.com/in/sabuhiabs/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-custom-blue dark:hover:text-custom-blue transition-colors duration-300">
               <Linkedin size={20} />
               <span>linkedin.sabbasov.com</span>
+            </a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-custom-blue dark:hover:text-custom-blue transition-colors duration-300">
+              <Download size={20} />
+              <span>Download Resume</span>
             </a>
           </div>
         </motion.div>
