@@ -20,7 +20,7 @@ const educationData = [
       'Differential Equations',
       'Applied Databases',
       'Data Manipulation & Visualization',
-      'Algorithms & Data Structures'
+      'Linear Algebra'
     ],
     icon: <GraduationCap size={24} />,
     color: 'from-blue-500 to-indigo-600',
@@ -33,20 +33,18 @@ const educationData = [
     period: 'Aug 2022 - May 2024',
     location: 'Karuizawa, Japan',
     status: 'Graduated',
-    gpa: '38/42 Points',
     honors: [
       'IB Diploma with Bilingual Recognition',
       'Academic Excellence Award'
     ],
     coursework: [
-      'Computer Science HL',
-      'Mathematics Analysis HL',
-      'Physics SL',
-      'Economics SL'
+      'Computer Science',
+      'Mathematics Analysis & Approaches',
+      'Physics',
+      'Economics'
     ],
     icon: <Trophy size={24} />,
     color: 'from-emerald-500 to-teal-600',
-    achievements: 'Top 15% of Class',
     current: false,
   },
 ];
