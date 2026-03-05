@@ -60,18 +60,30 @@ const techStack = [
   {
     name: 'Flask',
     logo: (
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flask_logo.svg" alt="Flask" className="w-6 h-6" />
+      <svg viewBox="0 0 300 300" className="w-6 h-6">
+        <defs>
+          <linearGradient id="flask-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FF6B6B" />
+            <stop offset="100%" stopColor="#4ECDC4" />
+          </linearGradient>
+        </defs>
+        <g id="Logo">
+          <path id="Box" d="M300,30l0,240c0,16.557 -13.443,30 -30,30l-240,-0c-16.557,-0 -30,-13.443 -30,-30l0,-240c0,-16.557 13.443,-30 30,-30l240,0c16.557,0 30,13.443 30,30Z" fill="url(#flask-gradient)"/>
+          <path id="Shadow" d="M300,239.188l0,30.812c0,16.557 -13.443,30 -30,30l-56.467,-0l-102.271,-102.271c8.125,7.368 17.707,13.707 28.945,17.933c20.672,7.788 47.014,8.525 80.222,-4.85l0.184,0.941c0.164,1.054 1.433,2.17 3.152,1.494l5.516,-2.149c1.893,-0.716 1.904,-2.169 1.627,-3.111l7.103,-2.773c0.798,-0.307 3.274,-2.221 1.146,-5.23l-0.021,0l-4.37,-6.672c-0.655,-0.727 -1.668,-1.003 -2.558,-0.645l-5.608,2.16c-0.665,-0.737 -1.627,-1.013 -2.569,-0.645c-1.832,0.716 -3.674,1.443 -5.505,2.159c-0.594,0.225 -0.758,0.665 -0.645,1.239l0.358,1.749c-10.336,1.116 -27.805,0.563 -43.452,-11.727c-6.918,-5.424 -13.406,-13.099 -18.82,-23.835l-50.354,25.662l-7.947,-6.453c18.154,-9.251 36.319,-18.502 54.474,-27.754c-1.177,-3.049 -2.323,-6.355 -6.243,-21.143l-58.849,26.336l-7.097,-7.096l64.186,-28.726c-0.921,-8.328 -3.437,-32.242 -3.336,-43.002l-0,-0.01c-0.016,-1.137 -0.111,-1.697 -0.51,-2.103l159.709,159.71Zm-233.137,-111.262c0.763,0.699 2.048,0.814 3.356,0.238l0.45,-0.194c0.387,1.622 0.824,3.325 1.309,5.071l-5.115,-5.115Z" fill="#3b808b"/>
+          <g id="Icon">
+            <path d="M140.801,81.591c-0.021,-1.494 -0.174,-1.996 -0.972,-2.456c-0.758,-0.502 -1.904,-0.512 -2.999,-0.031l-73.683,31.551c-1.095,0.481 -2.128,1.443 -2.681,2.486c-0.552,1.044 -0.614,2.149 -0.184,2.937l6.151,11.298l0.081,0.133c0.666,1.055 2.17,1.331 3.705,0.655l0.45,-0.194c1.924,8.064 5.076,18.155 9.282,25.349l64.186,-28.726c-0.921,-8.33 -3.439,-32.257 -3.336,-43.012l-0,0.01Z" fill="#fff" fillRule="nonzero"/>
+            <path d="M145.897,134.079l-61.811,27.662c3.633,6.887 8.115,14.194 13.58,21.235c18.154,-9.251 36.319,-18.502 54.474,-27.754c-1.177,-3.049 -2.323,-6.355 -6.243,-21.143Z" fill="#fff" fillRule="nonzero"/>
+            <path d="M239.136,199.984l-4.37,-6.672c-0.655,-0.727 -1.668,-1.003 -2.558,-0.645l-5.608,2.16c-0.665,-0.737 -1.627,-1.013 -2.569,-0.645c-1.832,0.716 -3.674,1.443 -5.505,2.159c-0.594,0.225 -0.758,0.665 -0.645,1.239l0.358,1.749c-10.336,1.116 -27.805,0.563 -43.452,-11.727c-6.918,-5.424 -13.406,-13.099 -18.82,-23.835l-52.11,26.557c9.528,10.469 21.491,19.751 36.35,25.338c20.672,7.788 47.014,8.525 80.222,-4.85l0.184,0.941c0.164,1.054 1.433,2.17 3.152,1.494l5.516,-2.149c1.893,-0.716 1.904,-2.169 1.627,-3.111l7.103,-2.773c0.798,-0.307 3.274,-2.221 1.146,-5.23l-0.021,0Z" fill="#fff" fillRule="nonzero"/>
+          </g>
+        </g>
+      </svg>
     ),
   },
 ];
 
 const Hero = () => {
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-gradient-to-br from-zinc-50 via-white to-blue-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-800" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/20 via-transparent to-transparent dark:from-blue-900/10" />
-      
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 relative">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Side - Main Content */}
@@ -143,7 +155,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="relative"
           >
-            <div className="bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm rounded-2xl border border-zinc-200/50 dark:border-zinc-700/50 p-8 shadow-xl">
+            <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8">
               <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-6 text-center font-mono tracking-tight">
                 Technologies I Work With
               </h3>
@@ -155,7 +167,7 @@ const Hero = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 1 + index * 0.1 }}
-                    className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-700/50 hover:border-[#355872]/30 dark:hover:border-[#276DC3]/30 hover:shadow-md transition-all duration-300 group"
+                    className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 hover:border-[#355872]/50 dark:hover:border-[#276DC3]/50 hover:shadow-md transition-all duration-300 group"
                   >
                     <div className="transform group-hover:scale-110 transition-transform duration-300">
                       {tech.logo}
