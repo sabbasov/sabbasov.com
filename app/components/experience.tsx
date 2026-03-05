@@ -15,16 +15,6 @@ const experienceData = [
     current: true,
   },
   {
-    role: 'Data Analyst Intern',
-    company: 'Innovation & Digital Development Agency',
-    period: 'Jul 2024 - Aug 2024',
-    description:
-      'I worked with datasets for over 100,000 users as part of Azerbaijan\'s national digital infrastructure. Using SQL and Python, I analyzed government-level data to help improve system performance while maintaining strict security and confidentiality.',
-    icon: <Database size={20} />,
-    color: 'from-blue-500 to-cyan-500',
-    current: false,
-  },
-  {
     role: 'Technical Support Assistant',
     company: 'The College of Idaho',
     period: 'Sep 2024 - May 2025',
@@ -42,6 +32,16 @@ const experienceData = [
       'I helped teach Computer Science lessons and supported students as they worked through difficult coding projects. I spent most of my time debugging code with students and giving them feedback on their assignments to help them improve their programming skills.',
     icon: <Code size={20} />,
     color: 'from-purple-500 to-pink-500',
+    current: false,
+  },
+  {
+    role: 'Data Analyst Intern',
+    company: 'Innovation & Digital Development Agency',
+    period: 'Jul 2024 - Aug 2024',
+    description:
+      'I worked with datasets for over 100,000 users as part of Azerbaijan\'s national digital infrastructure. Using SQL and Python, I analyzed government-level data to help improve system performance while maintaining strict security and confidentiality.',
+    icon: <Database size={20} />,
+    color: 'from-blue-500 to-cyan-500',
     current: false,
   },
 ];
