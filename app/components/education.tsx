@@ -13,8 +13,7 @@ const educationData = [
     gpa: '3.8/4.0',
     honors: [
       'Dean\'s List',
-      'Davis UWC Scholar',
-      'BP Talented Youth Scholar'
+      'Davis UWC Scholar'
     ],
     coursework: [
       'Differential Equations',
@@ -24,7 +23,6 @@ const educationData = [
     ],
     icon: <GraduationCap size={24} />,
     color: 'from-blue-500 to-indigo-600',
-    achievements: '40+ Credits Completed',
     current: true,
   },
   {
@@ -35,7 +33,7 @@ const educationData = [
     status: 'Graduated',
     honors: [
       'IB Diploma with Bilingual Recognition',
-      'Academic Excellence Award'
+      'BP Talented Youth Scholar'
     ],
     coursework: [
       'Computer Science',
@@ -124,7 +122,7 @@ const Education = () => {
                       </div>
                       
                       {/* Academic Stats */}
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+                      <div className="grid grid-cols-2 gap-4 mb-6">
                         <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center">
                           <div className="flex items-center justify-center gap-2 mb-2">
                             <Calendar size={16} className="text-zinc-500 dark:text-zinc-400" />
@@ -133,21 +131,15 @@ const Education = () => {
                           <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.period}</p>
                         </div>
                         
-                        <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center">
-                          <div className="flex items-center justify-center gap-2 mb-2">
-                            <Award size={16} className="text-zinc-500 dark:text-zinc-400" />
+                        {edu.gpa && (
+                          <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center">
+                            <div className="flex items-center justify-center gap-2 mb-2">
+                              <Award size={16} className="text-zinc-500 dark:text-zinc-400" />
+                            </div>
+                            <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">GPA</p>
+                            <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.gpa}</p>
                           </div>
-                          <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">GPA</p>
-                          <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.gpa}</p>
-                        </div>
-                        
-                        <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center col-span-2 md:col-span-1">
-                          <div className="flex items-center justify-center gap-2 mb-2">
-                            <Trophy size={16} className="text-zinc-500 dark:text-zinc-400" />
-                          </div>
-                          <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">Achievement</p>
-                          <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.achievements}</p>
-                        </div>
+                        )}
                       </div>
                       
                       {/* Honors & Awards */}
