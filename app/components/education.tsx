@@ -63,9 +63,9 @@ const Education = () => {
         
         <div className="relative">
           {/* Academic Timeline */}
-          <div className="hidden md:block absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-zinc-200 via-zinc-300 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-800" />
+          <div className="hidden sm:block absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-zinc-200 via-zinc-300 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-800" />
           
-          <div className="space-y-16">
+          <div className="space-y-12 lg:space-y-16">
             {educationData.map((edu, index) => (
               <motion.div
                 key={index}
@@ -73,35 +73,35 @@ const Education = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.2 }}
                 viewport={{ once: true }}
-                className={`relative flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                }`}
+                className={`relative flex flex-col ${
+                  index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                } items-center gap-8`}
               >
                 {/* Timeline Node */}
-                <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 z-10">
-                  <div className={`w-6 h-6 rounded-full bg-gradient-to-r ${edu.color} border-4 border-white dark:border-zinc-950 shadow-lg ${edu.current ? 'animate-pulse' : ''}`}>
-                    <div className={`w-2 h-2 rounded-full bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${edu.current ? 'animate-ping' : ''}`} />
+                <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2 z-10">
+                  <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-gradient-to-r ${edu.color} border-3 sm:border-4 border-white dark:border-zinc-950 shadow-lg ${edu.current ? 'animate-pulse' : ''}`}>
+                    <div className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 ${edu.current ? 'animate-ping' : ''}`} />
                   </div>
                 </div>
                 
                 {/* Education Card */}
-                <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+                <div className={`flex-1 w-full ${index % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'}`}>
                   <div className="group relative">
                     {/* Gradient Background Effect */}
                     <div className={`absolute inset-0 bg-gradient-to-r ${edu.color} rounded-3xl blur opacity-0 group-hover:opacity-10 transition-all duration-500`} />
                     
-                    <div className="relative bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 p-8 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:border-zinc-300 dark:group-hover:border-zinc-700">
+                    <div className="relative bg-white dark:bg-zinc-900 rounded-3xl border border-zinc-200 dark:border-zinc-800 p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:border-zinc-300 dark:group-hover:border-zinc-700">
                       {/* Header */}
-                      <div className="flex items-start justify-between mb-6">
-                        <div className="flex items-center gap-4">
-                          <div className={`bg-gradient-to-r ${edu.color} p-4 rounded-2xl text-white group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6 gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                          <div className={`bg-gradient-to-r ${edu.color} p-3 sm:p-4 rounded-2xl text-white group-hover:scale-110 transition-transform duration-300 shadow-lg shrink-0`}>
                             {edu.icon}
                           </div>
-                          <div>
-                            <h3 className="text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
+                          <div className="min-w-0 flex-1">
+                            <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
                               {edu.institution}
                             </h3>
-                            <p className="text-lg font-semibold text-[#355872] dark:text-[#276DC3] mt-1">
+                            <p className="text-base sm:text-lg font-semibold text-[#355872] dark:text-[#276DC3] mt-1">
                               {edu.degree}
                             </p>
                             <div className="flex items-center gap-2 mt-2 text-sm text-zinc-500 dark:text-zinc-400">
@@ -112,7 +112,7 @@ const Education = () => {
                         </div>
                         
                         {/* Status Badge */}
-                        <div className={`px-4 py-2 rounded-xl text-sm font-bold ${
+                        <div className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold shrink-0 self-start ${
                           edu.current 
                             ? 'bg-gradient-to-r from-emerald-500 to-green-500 text-white' 
                             : 'bg-gradient-to-r from-gray-500 to-gray-600 text-white'
@@ -122,22 +122,22 @@ const Education = () => {
                       </div>
                       
                       {/* Academic Stats */}
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center">
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-6">
+                        <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-3 sm:p-4 text-center">
                           <div className="flex items-center justify-center gap-2 mb-2">
-                            <Calendar size={16} className="text-zinc-500 dark:text-zinc-400" />
+                            <Calendar size={14} className="text-zinc-500 dark:text-zinc-400" />
                           </div>
                           <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">Period</p>
-                          <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.period}</p>
+                          <p className="font-bold text-zinc-900 dark:text-white text-xs sm:text-sm">{edu.period}</p>
                         </div>
                         
                         {edu.gpa && (
-                          <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-4 text-center">
+                          <div className="bg-zinc-50 dark:bg-zinc-800/50 rounded-xl p-3 sm:p-4 text-center">
                             <div className="flex items-center justify-center gap-2 mb-2">
-                              <Award size={16} className="text-zinc-500 dark:text-zinc-400" />
+                              <Award size={14} className="text-zinc-500 dark:text-zinc-400" />
                             </div>
                             <p className="text-xs text-zinc-500 dark:text-zinc-400 mb-1">GPA</p>
-                            <p className="font-bold text-zinc-900 dark:text-white text-sm">{edu.gpa}</p>
+                            <p className="font-bold text-zinc-900 dark:text-white text-xs sm:text-sm">{edu.gpa}</p>
                           </div>
                         )}
                       </div>

@@ -62,9 +62,9 @@ const Experience = () => {
         
         <div className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-8 md:left-1/2 transform md:-translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-zinc-200 via-zinc-300 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-800" />
+          <div className="absolute left-6 sm:left-8 md:left-1/2 transform md:-translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-zinc-200 via-zinc-300 to-zinc-200 dark:from-zinc-800 dark:via-zinc-700 dark:to-zinc-800" />
           
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experienceData.map((item, index) => (
               <motion.div
                 key={index}
@@ -77,32 +77,32 @@ const Experience = () => {
                 }`}
               >
                 {/* Timeline Node */}
-                <div className="absolute left-8 md:left-1/2 transform -translate-x-1/2 -translate-y-2">
-                  <div className={`w-4 h-4 rounded-full bg-gradient-to-r ${item.color} border-4 border-white dark:border-zinc-950 shadow-lg ${item.current ? 'animate-pulse' : ''}`} />
+                <div className="absolute left-6 sm:left-8 md:left-1/2 transform -translate-x-1/2 -translate-y-2">
+                  <div className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gradient-to-r ${item.color} border-3 sm:border-4 border-white dark:border-zinc-950 shadow-lg ${item.current ? 'animate-pulse' : ''}`} />
                 </div>
                 
                 {/* Content Card */}
-                <div className={`flex-1 ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
-                  <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
+                <div className={`flex-1 ml-12 sm:ml-16 md:ml-0 ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}>
+                  <div className="bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-4 sm:p-6 shadow-sm hover:shadow-lg transition-all duration-300 group">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center gap-3">
-                        <div className={`bg-gradient-to-r ${item.color} p-3 rounded-xl text-white group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4 gap-3 sm:gap-4">
+                      <div className="flex items-start gap-3">
+                        <div className={`bg-gradient-to-r ${item.color} p-2.5 sm:p-3 rounded-xl text-white group-hover:scale-110 transition-transform duration-300 shrink-0`}>
                           {item.icon}
                         </div>
-                        <div>
-                          <h3 className="text-lg font-bold text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="text-base sm:text-lg font-bold text-zinc-900 dark:text-white group-hover:text-zinc-700 dark:group-hover:text-zinc-200 transition-colors">
                             {item.role}
                           </h3>
-                          <p className="text-md font-semibold text-[#355872] dark:text-[#276DC3]">
+                          <p className="text-sm sm:text-md font-semibold text-[#355872] dark:text-[#276DC3]">
                             {item.company}
                           </p>
                         </div>
                       </div>
                       
-                      <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-800 px-3 py-1.5 rounded-lg shrink-0">
+                      <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-800 px-3 py-1.5 rounded-lg shrink-0 self-start">
                         <Calendar size={14} className="text-zinc-500 dark:text-zinc-400" />
-                        <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+                        <span className="text-xs sm:text-sm font-medium text-zinc-600 dark:text-zinc-400">
                           {item.period}
                         </span>
                       </div>

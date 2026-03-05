@@ -39,7 +39,7 @@ const otherProjects = [
 const Projects = () => {
   return (
     <section id="projects" className="py-20">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -56,7 +56,7 @@ const Projects = () => {
         </motion.div>
 
         {/* Featured Aviation Projects */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 mb-16">
           {featuredProjects.map((project, index) => (
             <motion.div
               key={index}
@@ -67,11 +67,11 @@ const Projects = () => {
               className="group relative overflow-hidden rounded-2xl bg-white dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all duration-300"
             >
               {/* Gradient Header */}
-              <div className={`h-32 bg-gradient-to-br ${project.gradient} relative`}>
+              <div className={`h-28 sm:h-32 bg-gradient-to-br ${project.gradient} relative`}>
                 <div className="absolute inset-0 bg-black/10" />
-                <div className="absolute bottom-4 left-6 text-white">
-                  <h3 className="text-2xl font-bold font-mono tracking-tight">{project.title}</h3>
-                  <p className="text-sm opacity-90 font-medium">{project.subtitle}</p>
+                <div className="absolute bottom-3 sm:bottom-4 left-4 sm:left-6 text-white">
+                  <h3 className="text-xl sm:text-2xl font-bold font-mono tracking-tight">{project.title}</h3>
+                  <p className="text-xs sm:text-sm opacity-90 font-medium">{project.subtitle}</p>
                 </div>
               </div>
 
@@ -94,31 +94,34 @@ const Projects = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center gap-3">
+                <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href={project.link}
-                    className="flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 px-4 py-2 rounded-lg font-medium hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors duration-300"
+                    className="flex-1 bg-gradient-to-r from-[#355872] to-[#276DC3] text-white text-center py-2.5 px-4 rounded-xl font-medium hover:shadow-lg hover:shadow-[#355872]/25 transition-all duration-300 hover:scale-[1.02]"
                   >
                     Learn More →
                   </Link>
-                  <a
-                    href={project.external}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300"
-                  >
-                    <ExternalLink size={16} />
-                    Live Site
-                  </a>
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors duration-300"
-                  >
-                    <Github size={16} />
-                    Code
-                  </a>
+                  
+                  <div className="flex gap-3">
+                    <a
+                      href={project.external}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-xl hover:border-[#355872] hover:text-[#355872] dark:hover:border-[#276DC3] dark:hover:text-[#276DC3] transition-all duration-300"
+                    >
+                      <ExternalLink size={16} />
+                      <span className="hidden sm:inline">Demo</span>
+                    </a>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 px-4 py-2.5 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-xl hover:border-[#355872] hover:text-[#355872] dark:hover:border-[#276DC3] dark:hover:text-[#276DC3] transition-all duration-300"
+                    >
+                      <Github size={16} />
+                      <span className="hidden sm:inline">Code</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>
