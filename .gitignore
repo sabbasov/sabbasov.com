@@ -10,3 +10,9 @@ personal_logo_master.svg
 .venv/
 __pycache__/
 *.pyc
+*.tex
+*.aux
+*.log
+*.out
+*.fdb_latexmk
+*.fls
