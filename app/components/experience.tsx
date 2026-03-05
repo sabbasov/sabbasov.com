@@ -1,41 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
-const experienceData = [
-  {
-    role: 'Student Supervisor',
-    company: 'Bon Appétit',
-    period: 'Aug 2025 – Present',
-    description:
-      'I lead a team of 5–6 staff during busy service hours. My role is to coordinate tasks and keep communication clear so that everything runs smoothly and guests are taken care of. I focus on solving problems in real-time and making sure our team hits our safety and service goals every shift.',
-  },
-  {
-    role: 'Data Analyst Intern',
-    company: 'Innovation & Digital Development Agency',
-    period: 'Jul 2024 – Aug 2024',
-    description:
-      'I worked with datasets for over 100,000 users as part of Azerbaijan’s national digital infrastructure. Using SQL and Python, I analyzed government-level data to help improve system performance while maintaining strict security and confidentiality.',
-  },
-  {
-    role: 'Technical Support Assistant',
-    company: 'The College of Idaho',
-    period: 'Sep 2024 – May 2025',
-    description:
-      'I helped students and faculty solve technical problems with their devices and software. I supported Microsoft applications across campus and wrote down step-by-step guides (workflows) to make sure common issues could be fixed faster in the future.',
-  },
-  {
-    role: 'Teacher Assistant',
-    company: 'The College of Idaho',
-    period: 'Feb 2025 – May 2025',
-    description:
-      'I helped teach Computer Science lessons and supported students as they worked through difficult coding projects. I spent most of my time debugging code with students and giving them feedback on their assignments to help them improve their programming skills.',
-  },
-];
-
-'use client';
-
-import { motion } from 'framer-motion';
 import { Briefcase, Users, Code, Database, Calendar } from 'lucide-react';
 
 const experienceData = [
@@ -168,7 +133,5 @@ const Experience = () => {
     </section>
   );
 };
-
-export default Experience;
 
 export default Experience;
