@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SETUP — Outdoor Content System</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #f8f6f1;
+  --bg2: #f0ede5;
+  --bg3: #e8e4da;
+  --ink: #1a1916;
+  --ink2: #4a4840;
+  --ink3: #8a8680;
+  --rule: #d8d4ca;
+  --accent: #2d5a3d;
+  --accent-light: #e8f0eb;
+  --warn: #8b4513;
+  --warn-light: #fdf4ee;
+  --code-bg: #eceae3;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --sans: 'IBM Plex Sans', system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Layout */
+.page-wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px 80px;
+}
+
+/* Masthead */
+.masthead {
+  padding: 48px 0 36px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.masthead-left {}
+
+.doc-type {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 10px;
+}
+
+.doc-title {
+  font-family: var(--serif);
+  font-size: 42px;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.doc-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.masthead-right {
+  text-align: right;
+}
+
+.stack-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink3);
+  margin-bottom: 6px;
+  letter-spacing: 0.06em;
+}
+
+.stack-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-end;
+}
+
+.stack-item {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 2px 8px;
+  border-radius: 2px;
+}
+
+/* Nav */
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 56px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.toc-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: none;
+  color: var(--ink3);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: uppercase;
+}
+
+.toc-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+
+/* Sections */
+.section {
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.section.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-letter {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  background: var(--bg3);
+  padding: 3px 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* Block types */
+h3 {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin: 32px 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+h3:first-of-type { margin-top: 0; }
+
+p {
+  color: var(--ink2);
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+}
+
+/* Settings table */
+.s-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+  font-size: 13px;
+}
+
+.s-table th {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  font-weight: 500;
+}
+
+.s-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink2);
+  vertical-align: top;
+}
+
+.s-table td:first-child {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  white-space: nowrap;
+  width: 200px;
+}
+
+.s-table tr:last-child td { border-bottom: none; }
+.s-table tr:hover td { background: var(--bg2); }
+
+code {
+  font-family: var(--mono);
+  font-size: 11px;
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 1px 5px;
+  color: var(--accent);
+}
+
+/* Note blocks */
+.note {
+  padding: 12px 16px;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--ink2);
+  border-left: 3px solid var(--rule);
+  background: var(--bg2);
+}
+
+.note.green { border-left-color: var(--accent); background: var(--accent-light); }
+.note.warn { border-left-color: var(--warn); background: var(--warn-light); }
+
+.note strong { color: var(--ink); }
+
+/* Folder tree */
+.tree {
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 2;
+  background: var(--code-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.tree .dir { color: var(--accent); font-weight: 500; }
+.tree .file { color: var(--ink2); }
+.tree .cmt { color: var(--ink3); }
+
+/* Role cards */
+.role-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.role-card {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.role-card-head {
+  padding: 10px 16px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.role-tag {
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 2px 6px;
+  border-radius: 2px;
+  font-size: 9px;
+}
+
+.role-card-body {
+  padding: 16px;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.7;
+}
+
+.role-card-body strong { color: var(--ink); }
+
+/* Integration items */
+.integration {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 0;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.int-name {
+  padding: 12px 16px;
+  background: var(--bg3);
+  border-right: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.int-body {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--ink2);
+  line-height: 1.65;
+}
+
+/* Checklist */
+.checklist {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.checklist-group {
+  border-bottom: 1px solid var(--rule);
+}
+
+.checklist-group:last-child { border-bottom: none; }
+
+.cl-group-title {
+  padding: 8px 16px;
+  background: var(--bg3);
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  border-bottom: 1px solid var(--rule);
+}
+
+.cl-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 0.1s;
+}
+
+.cl-item:last-child { border-bottom: none; }
+.cl-item:hover { background: var(--bg2); }
+
+.cl-item input[type="checkbox"] {
+  margin-top: 2px;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+}
+
+.cl-item label {
+  font-size: 13px;
+  color: var(--ink2);
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.cl-item.done label {
+  text-decoration: line-through;
+  color: var(--ink3);
+}
+
+.checklist-progress {
+  padding: 10px 16px;
+  background: var(--bg2);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-bar {
+  height: 3px;
+  background: var(--rule);
+  border-radius: 2px;
+  flex: 1;
+  margin: 0 16px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+/* Spec block */
+.spec {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.spec-head {
+  padding: 8px 16px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.spec-grid {
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.spec-item-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 3px;
+}
+
+.spec-item-val {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .page-wrap { padding: 0 16px 60px; }
+  .masthead { flex-direction: column; align-items: flex-start; }
+  .masthead-right { text-align: left; }
+  .masthead-right .stack-items { align-items: flex-start; }
+  .role-grid { grid-template-columns: 1fr; }
+  .integration { grid-template-columns: 1fr; }
+  .int-name { border-right: none; border-bottom: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="masthead">
+    <div class="masthead-left">
+      <div class="doc-type">Outdoor Content System · One-Time Setup</div>
+      <h1 class="doc-title">SETUP<br><em>Configuration Reference</em></h1>
+    </div>
+    <div class="masthead-right">
+      <div class="stack-label">CORE STACK</div>
+      <div class="stack-items">
+        <span class="stack-item">GoPro Hero 13</span>
+        <span class="stack-item">DaVinci Resolve (free)</span>
+        <span class="stack-item">Google Drive</span>
+        <span class="stack-item">GitHub Pages + Vercel</span>
+      </div>
+    </div>
+  </div>
+
+  <nav class="toc">
+    <button class="toc-btn active" onclick="show('hardware', this)">A · Hardware</button>
+    <button class="toc-btn" onclick="show('software', this)">B · Software</button>
+    <button class="toc-btn" onclick="show('files', this)">C · File System</button>
+    <button class="toc-btn" onclick="show('website', this)">D · Website</button>
+    <button class="toc-btn" onclick="show('ai', this)">E · AI System</button>
+    <button class="toc-btn" onclick="show('integrations', this)">F · Integrations</button>
+    <button class="toc-btn" onclick="show('checklist', this)">G · Setup Checklist</button>
+  </nav>
+
+  <!-- A: HARDWARE -->
+  <section id="hardware" class="section active">
+    <div class="section-head">
+      <span class="section-letter">A</span>
+      <h2 class="section-title">Hardware Setup</h2>
+    </div>
+
+    <h3>GoPro Hero 13 — Global Protune Defaults</h3>
+    <table class="s-table">
+      <tr><th>Setting</th><th>Value</th><th>Note</th></tr>
+      <tr><td>Color Profile</td><td><code>10-bit D-Log M</code></td><td>Maximum dynamic range. Required for all outdoor grading.</td></tr>
+      <tr><td>Shutter Rule</td><td><code>2× framerate</code></td><td>24fps → 1/50s · 60fps → 1/120s · Lock this habit.</td></tr>
+      <tr><td>ISO (outdoor)</td><td><code>100 min / 400 max</code></td><td>ND filters control exposure — not ISO.</td></tr>
+      <tr><td>White Balance</td><td><code>5500K locked</code></td><td>Auto WB drifts mid-shot. Lock for all outdoor use.</td></tr>
+      <tr><td>Bit Rate</td><td><code>High</code></td><td>Always. Cannot recover compressed footage.</td></tr>
+      <tr><td>Horizon Lock</td><td><code>On</code></td><td>Water, biking, hiking. Always on.</td></tr>
+      <tr><td>Camera Mic</td><td><code>Off</code></td><td>Using DJI mic. Disable camera audio.</td></tr>
+    </table>
+
+    <h3>GoPro — Save These as Named Presets</h3>
+    <table class="s-table">
+      <tr><th>Preset Name</th><th>Resolution</th><th>FPS</th><th>Lens</th><th>HyperSmooth</th><th>ND</th></tr>
+      <tr><td><code>SUNNY</code></td><td>4K</td><td>60</td><td>Wide</td><td>AutoBoost</td><td>ND16–32</td></tr>
+      <tr><td><code>OVERCAST</code></td><td>4K</td><td>30</td><td>Wide</td><td>AutoBoost</td><td>ND4–8</td></tr>
+      <tr><td><code>WATER</code></td><td>4K</td><td>60</td><td>Linear</td><td>High</td><td>ND16–32</td></tr>
+      <tr><td><code>HIKE</code></td><td>4K</td><td>30</td><td>Wide</td><td>AutoBoost</td><td>ND8</td></tr>
+      <tr><td><code>BIKE</code></td><td>4K</td><td>60</td><td>Wide</td><td>AutoBoost</td><td>ND8–16</td></tr>
+      <tr><td><code>CAMP</code></td><td>2.7K</td><td>24</td><td>Wide</td><td>Off</td><td>None</td></tr>
+      <tr><td><code>ROAD</code></td><td>4K</td><td>30</td><td>Wide</td><td>AutoBoost</td><td>ND8</td></tr>
+      <tr><td><code>SLOWMO</code></td><td>2.7K</td><td>120</td><td>Wide</td><td>AutoBoost</td><td>ND16</td></tr>
+    </table>
+    <div class="note warn"><strong>CAMP preset exception:</strong> Switch to <code>Natural</code> color profile (not D-Log M). At ISO 3200, D-Log M amplifies noise. Use tripod — HyperSmooth off.</div>
+
+    <h3>iPhone — Camera Configuration</h3>
+    <table class="s-table">
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Format</td><td><code>Apple ProRAW</code> — Settings → Camera → Formats → Apple ProRAW. Always on.</td></tr>
+      <tr><td>Photo Resolution</td><td><code>48MP max</code> — do not reduce.</td></tr>
+      <tr><td>Video (backup)</td><td><code>4K 30fps, Cinematic Mode</code> for close subjects; standard 4K for everything else.</td></tr>
+      <tr><td>Grid</td><td><code>On</code> — rule of thirds enforcement.</td></tr>
+      <tr><td>EV Compensation</td><td><code>−0.5 to −1.0</code> outdoor default — protects sky highlights.</td></tr>
+    </table>
+    <div class="note green">iPhone is your primary photo tool and low-light video tool. GoPro does not outperform it for firelight or close-up scenes.</div>
+
+    <h3>DJI Mini Mic — One-Time Configuration</h3>
+    <table class="s-table">
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Gain (outdoor)</td><td><code>−10 dB</code></td></tr>
+      <tr><td>Gain (quiet/indoor)</td><td><code>+3 dB</code></td></tr>
+      <tr><td>Sample Rate</td><td><code>48 kHz / 24-bit</code> — match DaVinci timeline to this.</td></tr>
+      <tr><td>Windshield</td><td>Foam windshield: always outdoors. Furry/DeadCat: sustained wind (ridges, open water).</td></tr>
+      <tr><td>Backup recorder</td><td>Run iPhone Voice Memo simultaneously whenever recording voice outdoors.</td></tr>
+    </table>
+  </section>
+
+  <!-- B: SOFTWARE -->
+  <section id="software" class="section">
+    <div class="section-head">
+      <span class="section-letter">B</span>
+      <h2 class="section-title">Software Setup</h2>
+    </div>
+
+    <div class="note green"><strong>Primary editor:</strong> DaVinci Resolve (free desktop). Download from Blackmagic Design. The free version handles 4K, 10-bit, color grading, audio, and all required export formats.</div>
+
+    <h3>DaVinci Resolve — Initial Configuration</h3>
+    <table class="s-table">
+      <tr><th>Setting</th><th>Value</th><th>Where</th></tr>
+      <tr><td>Timeline Resolution</td><td><code>3840×2160 (4K UHD)</code></td><td>Preferences → User → Editing</td></tr>
+      <tr><td>Timeline Frame Rate</td><td><code>23.976 fps</code></td><td>Project Settings → Master Settings</td></tr>
+      <tr><td>Playback Frame Rate</td><td><code>23.976 fps</code></td><td>Project Settings → Master Settings</td></tr>
+      <tr><td>Color Science</td><td><code>DaVinci YRGB Color Managed</code></td><td>Project Settings → Color Management</td></tr>
+      <tr><td>Input Color Space</td><td><code>GoPro Protune D-Log M</code></td><td>Project Settings → Color Management</td></tr>
+      <tr><td>Output Color Space</td><td><code>REC.709 Gamma 2.4</code></td><td>Project Settings → Color Management</td></tr>
+      <tr><td>Auto Save</td><td><code>Every 5 minutes</code></td><td>Preferences → User → Project Save</td></tr>
+      <tr><td>Optimized Media</td><td><code>ProRes Proxy</code></td><td>Preferences → Media Storage (for smooth 4K playback)</td></tr>
+    </table>
+
+    <h3>Export Presets — Create Once in Deliver Page</h3>
+    <div class="note">In DaVinci Resolve's Deliver page: configure each preset below → click <strong>"Save As Preset"</strong> with the exact name shown. You'll select these by name every month.</div>
+
+    <div class="spec">
+      <div class="spec-head">Preset: OUTDOOR_YouTube_4K</div>
+      <div class="spec-grid">
+        <div><div class="spec-item-label">Resolution</div><div class="spec-item-val">3840×2160</div></div>
+        <div><div class="spec-item-label">Frame Rate</div><div class="spec-item-val">23.976fps</div></div>
+        <div><div class="spec-item-label">Codec</div><div class="spec-item-val">H.264</div></div>
+        <div><div class="spec-item-label">Bitrate</div><div class="spec-item-val">80 Mbps</div></div>
+        <div><div class="spec-item-label">Audio</div><div class="spec-item-val">AAC 320kbps</div></div>
+        <div><div class="spec-item-label">Format</div><div class="spec-item-val">.mp4</div></div>
+        <div><div class="spec-item-label">Color Space</div><div class="spec-item-val">REC.709</div></div>
+      </div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head">Preset: OUTDOOR_Shorts_9x16</div>
+      <div class="spec-grid">
+        <div><div class="spec-item-label">Resolution</div><div class="spec-item-val">1080×1920</div></div>
+        <div><div class="spec-item-label">Frame Rate</div><div class="spec-item-val">30fps</div></div>
+        <div><div class="spec-item-label">Codec</div><div class="spec-item-val">H.264</div></div>
+        <div><div class="spec-item-label">Bitrate</div><div class="spec-item-val">20 Mbps</div></div>
+        <div><div class="spec-item-label">Audio</div><div class="spec-item-val">AAC 320kbps</div></div>
+        <div><div class="spec-item-label">Format</div><div class="spec-item-val">.mp4</div></div>
+        <div><div class="spec-item-label">Note</div><div class="spec-item-val">Separate 9:16 timeline required</div></div>
+      </div>
+    </div>
+
+    <div class="spec">
+      <div class="spec-head">Preset: OUTDOOR_Web_1080</div>
+      <div class="spec-grid">
+        <div><div class="spec-item-label">Resolution</div><div class="spec-item-val">1920×1080</div></div>
+        <div><div class="spec-item-label">Frame Rate</div><div class="spec-item-val">23.976fps</div></div>
+        <div><div class="spec-item-label">Codec</div><div class="spec-item-val">H.264</div></div>
+        <div><div class="spec-item-label">Bitrate</div><div class="spec-item-val">16 Mbps</div></div>
+        <div><div class="spec-item-label">Audio</div><div class="spec-item-val">AAC 320kbps</div></div>
+        <div><div class="spec-item-label">Format</div><div class="spec-item-val">.mp4</div></div>
+        <div><div class="spec-item-label">Note</div><div class="spec-item-val">Upload to YouTube; embed from there</div></div>
+      </div>
+    </div>
+
+    <h3>Lightroom Classic — Photo Setup</h3>
+    <div class="note">Download Lightroom Classic (free, no subscription — the standalone installer is available via Adobe's direct download). Create a catalog named <code>OUTDOOR_Photos.lrcat</code>. Import to this catalog every month.</div>
+    <p>Create and save this as a preset called <code>OUTDOOR_Base</code>: Highlights −30 · Shadows +15 · Whites −10 · Blacks +5 · Clarity +5 · Vibrance +8 · Saturation −5 · Temp +150 · Tint +5 · Greens Hue −10 · Blues Sat +15</p>
+  </section>
+
+  <!-- C: FILE SYSTEM -->
+  <section id="files" class="section">
+    <div class="section-head">
+      <span class="section-letter">C</span>
+      <h2 class="section-title">File System Setup</h2>
+    </div>
+
+    <h3>Master Folder Structure</h3>
+    <div class="tree">
+<span class="dir">OUTDOOR_CONTENT/</span>
+├── <span class="dir">2025-06_June/</span>
+│   ├── <span class="dir">01_RAW/</span>
+│   │   ├── <span class="dir">VIDEO_GoPro/</span>          <span class="cmt">→ raw .mp4 from GoPro SD card</span>
+│   │   ├── <span class="dir">VIDEO_iPhone/</span>          <span class="cmt">→ raw .mov from iPhone</span>
+│   │   └── <span class="dir">AUDIO_DJI/</span>             <span class="cmt">→ raw .wav from DJI mic</span>
+│   ├── <span class="dir">02_PHOTOS_RAW/</span>
+│   │   ├── <span class="dir">iPhone_ProRAW/</span>
+│   │   └── <span class="dir">GoPro_RAW/</span>
+│   ├── <span class="dir">03_SELECTS/</span>
+│   │   ├── <span class="dir">VIDEO_Selects/</span>          <span class="cmt">→ flagged clips, not trimmed</span>
+│   │   └── <span class="dir">PHOTO_Selects/</span>          <span class="cmt">→ best 5–10 photos, exported JPG</span>
+│   ├── <span class="dir">04_PROJECT/</span>
+│   │   └── <span class="file">2025-06_DaVinci.drp</span>    <span class="cmt">→ DaVinci project file</span>
+│   ├── <span class="dir">05_EXPORTS/</span>
+│   │   ├── <span class="file">2025-06_Film_YouTube.mp4</span>
+│   │   ├── <span class="file">2025-06_Film_Web.mp4</span>
+│   │   ├── <span class="file">2025-06_Short_001_Hiking.mp4</span>
+│   │   ├── <span class="file">2025-06_Short_002_Kayak.mp4</span>
+│   │   └── <span class="dir">Photos_Exported/</span>        <span class="cmt">→ web + social ready JPGs</span>
+│   └── <span class="file">2025-06_BRIEF.md</span>            <span class="cmt">→ marketing handoff document</span>
+├── <span class="dir">2025-07_July/</span>
+└── <span class="dir">_ASSETS/</span>
+    ├── <span class="dir">LUTs/</span>                       <span class="cmt">→ GoPro D-Log M LUT + any custom LUTs</span>
+    ├── <span class="dir">Templates/</span>                  <span class="cmt">→ BRIEF.md template, naming guide</span>
+    └── <span class="dir">Presets/</span>                    <span class="cmt">→ Lightroom .lrtemplate files</span>
+    </div>
+
+    <h3>Naming Conventions</h3>
+    <table class="s-table">
+      <tr><th>File Type</th><th>Pattern</th><th>Example</th></tr>
+      <tr><td>Raw video</td><td><code>YYYY-MM-DD_SRC_ACT_###</code></td><td><code>2025-06-14_GP_KAYAK_001.mp4</code></td></tr>
+      <tr><td>Monthly film</td><td><code>YYYY-MM_Film_PLATFORM</code></td><td><code>2025-06_Film_YouTube.mp4</code></td></tr>
+      <tr><td>Short clips</td><td><code>YYYY-MM_Short_###_Activity</code></td><td><code>2025-06_Short_002_Biking.mp4</code></td></tr>
+      <tr><td>Photos</td><td><code>YYYY-MM_Photo_###_Desc</code></td><td><code>2025-06_Photo_001_Summit.jpg</code></td></tr>
+      <tr><td>DaVinci project</td><td><code>YYYY-MM_DaVinci.drp</code></td><td><code>2025-06_DaVinci.drp</code></td></tr>
+      <tr><td>Versions</td><td>Append <code>_v1</code> <code>_v2</code> <code>_FINAL</code></td><td><code>..._YouTube_v2_FINAL.mp4</code></td></tr>
+    </table>
+
+    <h3>Source Codes</h3>
+    <table class="s-table">
+      <tr><td><code>GP</code></td><td>GoPro Hero 13</td></tr>
+      <tr><td><code>IP</code></td><td>iPhone</td></tr>
+      <tr><td><code>DJI</code></td><td>DJI Mini Mic (audio only)</td></tr>
+    </table>
+
+    <h3>Google Drive — Shared Exports Sync</h3>
+    <p>Install Google Drive desktop app. Sync <strong>only</strong> the <code>05_EXPORTS</code> folder. Raw footage stays local — never sync to Drive (too large). Share the Drive exports folder with your marketing team as "View only." This is their delivery inbox.</p>
+
+    <h3>GoPro Premium — Auto Cloud Backup</h3>
+    <p>GoPro app → Settings → Auto Upload → WiFi only. This backs up original-quality raw footage automatically after each trip. Your subscription covers unlimited storage. No additional cost.</p>
+  </section>
+
+  <!-- D: WEBSITE -->
+  <section id="website" class="section">
+    <div class="section-head">
+      <span class="section-letter">D</span>
+      <h2 class="section-title">Website / Archive Setup</h2>
+    </div>
+
+    <h3>Stack</h3>
+    <table class="s-table">
+      <tr><th>Component</th><th>Tool</th><th>Cost</th></tr>
+      <tr><td>Repository</td><td>GitHub (free)</td><td>Free</td></tr>
+      <tr><td>Hosting</td><td>Vercel (free tier) — connect to GitHub repo once</td><td>Free</td></tr>
+      <tr><td>Video</td><td>YouTube embed — never self-host video</td><td>Free</td></tr>
+      <tr><td>Photos</td><td>Static files in repo, served via Vercel CDN</td><td>Free</td></tr>
+    </table>
+
+    <h3>Monthly Archive — 5-Minute Update Process</h3>
+    <div class="note green"><strong>One-time setup:</strong> Create <code>archive/_template.html</code> in your repo with all structure in place. Every month: duplicate it, rename, replace 5 fields, push. Vercel deploys in ~30 seconds.</div>
+    <div class="tree">
+<span class="cmt"># The 5 fields to replace each month (everything else stays identical)</span>
+
+1. &lt;title&gt; → "June 2025 — Rainier + Puget Sound"
+2. &lt;!-- YOUTUBE_EMBED --&gt; → YouTube embed URL from Studio
+3. &lt;!-- PHOTO_1 --&gt; → 2025-06_Photo_001_Summit_WEB.jpg
+4. &lt;!-- PHOTO_2 --&gt; → 2025-06_Photo_003_Kayak_WEB.jpg
+5. &lt;!-- SUMMARY --&gt; → 2-sentence archive text from Marketing Director
+
+<span class="cmt"># Then: git add . → git commit -m "June 2025 archive" → git push</span>
+<span class="cmt"># Vercel auto-deploys. Live in ~30 seconds. Done.</span>
+    </div>
+    <div class="note">Use GitHub Desktop (free, no command line needed) if you prefer a visual interface for the git push step.</div>
+
+    <h3>Content per Archive Page</h3>
+    <table class="s-table">
+      <tr><th>Asset</th><th>Format</th><th>Source</th></tr>
+      <tr><td>Monthly film</td><td>YouTube embed URL</td><td>YouTube Studio after upload</td></tr>
+      <tr><td>Web photos (6–8)</td><td>JPG, 2400px long edge, 85%, sRGB</td><td>Lightroom export → repo /photos/YYYY-MM/</td></tr>
+      <tr><td>Summary text</td><td>2 sentences</td><td>Marketing Director Claude output</td></tr>
+      <tr><td>Photo alt text</td><td>One line per photo</td><td>Marketing Director Claude output</td></tr>
+    </table>
+
+    <div class="note green">Keep the site static and minimal. Its purpose is a permanent, searchable archive — not a content hub. Speed of update matters more than visual complexity.</div>
+  </section>
+
+  <!-- E: AI SYSTEM -->
+  <section id="ai" class="section">
+    <div class="section-head">
+      <span class="section-letter">E</span>
+      <h2 class="section-title">AI System Setup</h2>
+    </div>
+
+    <div class="note">Two separate Claude chats. Each has a distinct role. Keep them separate — do not mix tasks between them.</div>
+
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-card-head">Chat 1 <span class="role-tag">Technical Director</span></div>
+        <div class="role-card-body">
+          <strong>Purpose:</strong> Production decisions, system questions, technical troubleshooting.<br><br>
+          <strong>Responsible for:</strong>
+          <ul style="margin-top:6px;padding-left:16px;font-size:13px;line-height:1.9">
+            <li>Camera settings questions</li>
+            <li>DaVinci Resolve help (grading, export issues)</li>
+            <li>Editing structure decisions</li>
+            <li>Audio troubleshooting</li>
+            <li>Workflow refinements</li>
+          </ul>
+        </div>
+      </div>
+      <div class="role-card">
+        <div class="role-card-head">Chat 2 <span class="role-tag">Marketing Director</span></div>
+        <div class="role-card-body">
+          <strong>Purpose:</strong> Content planning, distribution, and all audience-facing copy. This role decides <em>how</em> your footage gets packaged and what content angle to lead with — not just where it gets posted.<br><br>
+          <strong>Responsible for:</strong>
+          <ul style="margin-top:6px;padding-left:16px;font-size:13px;line-height:1.9">
+            <li>Content angle + story framing per month</li>
+            <li>YouTube titles, descriptions, tags</li>
+            <li>Instagram / Reels captions + hashtags</li>
+            <li>Website archive copy + photo alt text</li>
+            <li>Publishing schedule recommendation</li>
+            <li>Flagging if footage is light → suggesting alternatives</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <h3>How to Interact with Each Chat</h3>
+    <table class="s-table">
+      <tr><th>Chat</th><th>What You Give It</th><th>What You Get Back</th></tr>
+      <tr><td>Technical Director</td><td>Specific technical problem or decision (e.g., "my D-Log M footage looks washed out after applying the LUT")</td><td>Precise technical answer or corrected workflow step</td></tr>
+      <tr><td>Marketing Director</td><td>The completed <code>BRIEF.md</code> file pasted in full + any specific platform requirements</td><td>All copy ready to paste: YouTube description, captions, tags, hashtags, alt text</td></tr>
+    </table>
+
+    <h3>Marketing Director — Starter System Prompt</h3>
+    <div class="tree" style="font-size:11px;line-height:1.8">
+<span class="cmt"># Paste this at the start of your Marketing Director chat — once, then reuse the chat</span>
+
+You are the marketing director for an outdoor content creator who films
+hiking, kayaking, mountain biking, camping, and road trips monthly.
+
+Your role has two parts:
+1. CONTENT PLANNING — given what footage exists, decide the best angle,
+   story frame, and which clips/photos to lead with. Recommend what to
+   highlight, not just how to describe it.
+2. DISTRIBUTION — produce all copy, captions, and scheduling recommendations.
+
+Each month I send you a BRIEF in this format:
+  MONTH · ACTIVITIES · ARC · FILM · SHORTS (up to 3) · PHOTOS (up to 10) · NOTES
+
+When I send a brief, produce in one response:
+1. Recommended content angle (1 sentence — the "why watch this" frame)
+2. YouTube title (under 60 chars, search-first, no hype)
+3. YouTube description (150 words, timestamps placeholder)
+4. 10 YouTube tags
+5. One Reels caption per short — three tones: [short / medium / with hashtags]
+6. Website headline (under 10 words) + 2-sentence archive summary
+7. Alt text for each photo (one line each)
+8. Publishing schedule (which content goes out on which day)
+
+Tone: authentic, outdoor-focused, never hype-driven.
+Prioritize searchability over cleverness on YouTube.
+If I say "minimal month" — produce only: content angle + YouTube title/desc + one Reel caption.
+If footage is light, suggest how to reframe it as intentional (e.g., "short solo trip" vs "failed month").
+    </div>
+
+    <h3>Claude Connectors (Free — Enable in claude.ai Settings)</h3>
+    <div class="note green"><strong>These are native Claude integrations available in claude.ai.</strong> Enable them in your Marketing Director chat for maximum leverage.</div>
+    <table class="s-table">
+      <tr><th>Connector</th><th>Enable In</th><th>How It's Used</th></tr>
+      <tr><td>Google Calendar</td><td>Marketing Director chat</td><td>Ask it to check your calendar for upcoming trips when planning the next month's content. Prevents scheduling conflicts with publish dates.</td></tr>
+      <tr><td>Gmail</td><td>Marketing Director chat</td><td>Draft collaboration emails, send yourself BRIEF summaries, or coordinate with a team without leaving the chat.</td></tr>
+    </table>
+    <div class="note">To enable: open your Marketing Director Claude chat → click the connector/integration icon → connect Google Calendar and Gmail. These are free native integrations in claude.ai.</div>
+
+    <h3>What AI Should Never Do</h3>
+    <table class="s-table">
+      <tr><td>Select which clips to use</td><td>Your creative judgment. AI cannot evaluate footage.</td></tr>
+      <tr><td>Choose music</td><td>Music is emotional. This is yours to decide.</td></tr>
+      <tr><td>Color grade</td><td>DaVinci Resolve + your eye.</td></tr>
+      <tr><td>Select best photos</td><td>Your eye + the 5-step selection process.</td></tr>
+    </table>
+  </section>
+
+  <!-- F: INTEGRATIONS -->
+  <section id="integrations" class="section">
+    <div class="section-head">
+      <span class="section-letter">F</span>
+      <h2 class="section-title">Integrations</h2>
+    </div>
+
+    <div class="note">Five integrations only. Each one earns its place. No overlap.</div>
+
+    <div class="integration">
+      <div class="int-name">Google Drive</div>
+      <div class="int-body"><strong>Connect:</strong> 05_EXPORTS folder only (not raw). <strong>Why:</strong> Marketing team's delivery inbox. Share folder as "View only." They pull files without you sending anything. <strong>Tool:</strong> Google Drive Desktop App.</div>
+    </div>
+
+    <div class="integration">
+      <div class="int-name">GoPro Cloud</div>
+      <div class="int-body"><strong>Connect:</strong> Auto-upload on WiFi (GoPro app → Auto Upload). <strong>Why:</strong> Unlimited original-quality raw backup included in Premium subscription. Zero cost, zero effort. This is your primary raw video backup.</div>
+    </div>
+
+    <div class="integration">
+      <div class="int-name">GitHub + Vercel</div>
+      <div class="int-body"><strong>Connect:</strong> Push monthly archive updates to GitHub → Vercel auto-deploys. <strong>One-time setup:</strong> Create <code>archive/_template.html</code> in your repo — this is your monthly copy-paste base. Each month: duplicate it, rename to <code>YYYY-MM.html</code>, replace 5 fields (title, YouTube embed URL, 3 photo filenames, summary text), commit + push. Vercel deploys in ~30 seconds. Total time: 5 minutes per month.</div>
+    </div>
+
+    <div class="integration">
+      <div class="int-name">Meta Business Suite</div>
+      <div class="int-body"><strong>Connect:</strong> Instagram + Facebook pages. <strong>Why:</strong> Free, native scheduler. Queue all Reels and photo posts for the month in one session. Direct upload, no third-party tool needed.</div>
+    </div>
+
+    <div class="integration">
+      <div class="int-name">YouTube Studio</div>
+      <div class="int-body"><strong>Connect:</strong> Channel connected to Google account. <strong>Why:</strong> Scheduled upload + chapter markers + thumbnail upload in one place. Set publish date at upload time — no external scheduler needed.</div>
+    </div>
+
+    <div class="note warn"><strong>Skip:</strong> Zapier, Buffer, Hootsuite, Dropbox alongside Drive, any Adobe CC subscription. Each adds complexity without replacing something that's already free and working.</div>
+  </section>
+
+  <!-- G: CHECKLIST -->
+  <section id="checklist" class="section">
+    <div class="section-head">
+      <span class="section-letter">G</span>
+      <h2 class="section-title">Setup Checklist</h2>
+    </div>
+
+    <div class="note">Complete this once. Estimated time: 3–4 hours in one sitting.</div>
+
+    <div class="checklist-progress">
+      <span id="cl-count">0 / 29 complete</span>
+      <div class="progress-bar"><div class="progress-fill" id="cl-bar" style="width:0%"></div></div>
+      <span id="cl-pct">0%</span>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-group">
+        <div class="cl-group-title">Hardware</div>
+        <div class="cl-item"><input type="checkbox" id="c1" onchange="updateProgress()"><label for="c1">GoPro Hero 13 — set all Protune global defaults</label></div>
+        <div class="cl-item"><input type="checkbox" id="c2" onchange="updateProgress()"><label for="c2">Create and save all 8 named GoPro presets (SUNNY, OVERCAST, WATER, HIKE, BIKE, CAMP, ROAD, SLOWMO)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c3" onchange="updateProgress()"><label for="c3">iPhone — enable Apple ProRAW, 48MP, grid on</label></div>
+        <div class="cl-item"><input type="checkbox" id="c4" onchange="updateProgress()"><label for="c4">DJI mic — set gain (−10dB outdoor), confirm 48kHz/24-bit sample rate</label></div>
+        <div class="cl-item"><input type="checkbox" id="c5" onchange="updateProgress()"><label for="c5">ND filter kit confirmed (ND4, ND8, ND16, ND32)</label></div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="cl-group-title">Software</div>
+        <div class="cl-item"><input type="checkbox" id="c6" onchange="updateProgress()"><label for="c6">DaVinci Resolve — downloaded and installed (free, Blackmagic Design)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c7" onchange="updateProgress()"><label for="c7">DaVinci — configure timeline resolution (4K UHD), frame rate (23.976fps)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c8" onchange="updateProgress()"><label for="c8">DaVinci — configure Color Management (D-Log M input → REC.709 output)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c9" onchange="updateProgress()"><label for="c9">DaVinci — create and save 3 export presets (OUTDOOR_YouTube_4K, OUTDOOR_Shorts_9x16, OUTDOOR_Web_1080)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c10" onchange="updateProgress()"><label for="c10">Download GoPro D-Log M LUT from GoPro's website → save to _ASSETS/LUTs/</label></div>
+        <div class="cl-item"><input type="checkbox" id="c11" onchange="updateProgress()"><label for="c11">Lightroom Classic — installed, catalog created (OUTDOOR_Photos.lrcat), OUTDOOR_Base preset saved</label></div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="cl-group-title">File System</div>
+        <div class="cl-item"><input type="checkbox" id="c12" onchange="updateProgress()"><label for="c12">Master folder structure created (OUTDOOR_CONTENT/ with _ASSETS/ and first month folder)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c13" onchange="updateProgress()"><label for="c13">BRIEF.md template file saved in _ASSETS/Templates/</label></div>
+        <div class="cl-item"><input type="checkbox" id="c14" onchange="updateProgress()"><label for="c14">Naming convention guide saved in _ASSETS/Templates/</label></div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="cl-group-title">Integrations</div>
+        <div class="cl-item"><input type="checkbox" id="c15" onchange="updateProgress()"><label for="c15">Google Drive desktop app installed, 05_EXPORTS folder synced</label></div>
+        <div class="cl-item"><input type="checkbox" id="c16" onchange="updateProgress()"><label for="c16">Google Drive exports folder shared with marketing team (view only)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c17" onchange="updateProgress()"><label for="c17">GoPro app — auto-upload enabled on WiFi</label></div>
+        <div class="cl-item"><input type="checkbox" id="c18" onchange="updateProgress()"><label for="c18">Meta Business Suite — Instagram + Facebook pages connected</label></div>
+        <div class="cl-item"><input type="checkbox" id="c19" onchange="updateProgress()"><label for="c19">YouTube Studio — channel verified, custom URL set</label></div>
+      <div class="checklist-group">
+        <div class="cl-group-title">Website</div>
+        <div class="cl-item"><input type="checkbox" id="c20" onchange="updateProgress()"><label for="c20">GitHub repo created for archive site</label></div>
+        <div class="cl-item"><input type="checkbox" id="c21" onchange="updateProgress()"><label for="c21">Vercel connected to GitHub repo, site deployed</label></div>
+        <div class="cl-item"><input type="checkbox" id="c21b" onchange="updateProgress()"><label for="c21b">Archive template created: <code>archive/_template.html</code> saved in repo (copy-paste base for every month)</label></div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="cl-group-title">AI System</div>
+        <div class="cl-item"><input type="checkbox" id="c22" onchange="updateProgress()"><label for="c22">Technical Director Claude chat started — this document shared as context</label></div>
+        <div class="cl-item"><input type="checkbox" id="c23" onchange="updateProgress()"><label for="c23">Marketing Director Claude chat started — starter system prompt pasted (see Section E)</label></div>
+      </div>
+
+      <div class="checklist-group">
+        <div class="cl-group-title">Verification</div>
+        <div class="cl-item"><input type="checkbox" id="c24" onchange="updateProgress()"><label for="c24">Test: Record 30s of GoPro footage with SUNNY preset → confirm D-Log M in DaVinci looks correct</label></div>
+        <div class="cl-item"><input type="checkbox" id="c25" onchange="updateProgress()"><label for="c25">Test: Apply D-Log M LUT in DaVinci Color page → image looks neutral/clean (not washed out)</label></div>
+        <div class="cl-item"><input type="checkbox" id="c26" onchange="updateProgress()"><label for="c26">Test: Export a 10-second clip with OUTDOOR_YouTube_4K preset → file plays at correct resolution</label></div>
+        <div class="cl-item"><input type="checkbox" id="c27" onchange="updateProgress()"><label for="c27">Test: iPhone ProRAW photo imports to Lightroom → OUTDOOR_Base preset applies correctly</label></div>
+        <div class="cl-item"><input type="checkbox" id="c28" onchange="updateProgress()"><label for="c28">Test: Drop an export into Google Drive sync folder → confirms it appears in team's shared folder</label></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.toc-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgress() {
+  const boxes = document.querySelectorAll('.checklist input[type="checkbox"]');
+  let checked = 0;
+  boxes.forEach((box, i) => {
+    const item = box.closest('.cl-item');
+    if (box.checked) {
+      checked++;
+      item.classList.add('done');
+    } else {
+      item.classList.remove('done');
+    }
+  });
+  const total = boxes.length;
+  const pct = Math.round((checked / total) * 100);
+  document.getElementById('cl-count').textContent = `${checked} / ${total} complete`;
+  document.getElementById('cl-pct').textContent = `${pct}%`;
+  document.getElementById('cl-bar').style.width = pct + '%';
+}
+
+// Persist checklist state
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach(box => {
+  const key = 'setup_' + box.id;
+  if (localStorage.getItem(key) === 'true') {
+    box.checked = true;
+    box.closest('.cl-item').classList.add('done');
+  }
+  box.addEventListener('change', () => {
+    localStorage.setItem(key, box.checked);
+    updateProgress();
+  });
+});
+updateProgress();
+</script>
+</body>
+</html>

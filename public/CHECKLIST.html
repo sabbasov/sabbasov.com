@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHECKLIST</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0f100e;
+  --panel:   #161714;
+  --line:    rgba(255,255,255,0.07);
+  --line2:   rgba(255,255,255,0.13);
+  --ink:     #dedad2;
+  --muted:   #5c5b57;
+  --dim:     #373633;
+  --green:   #8ec07c;
+  --amber:   #d4a96a;
+  --strike:  #3a3935;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+}
+
+.shell {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100vh;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── HEADER ── */
+.hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0 10px;
+  border-bottom: 1px solid var(--line2);
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.hdr-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.hdr-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hdr-month {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid var(--line2);
+  border-radius: 2px;
+  padding: 2px 7px;
+  background: none;
+  font-family: var(--mono);
+  transition: border-color 0.15s, color 0.15s;
+}
+.hdr-month:hover { color: var(--ink); border-color: var(--muted); }
+
+.hdr-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* progress pill */
+.prog-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.prog-track {
+  width: 80px;
+  height: 2px;
+  background: var(--line2);
+  border-radius: 1px;
+  overflow: hidden;
+}
+
+.prog-fill {
+  height: 100%;
+  background: var(--green);
+  border-radius: 1px;
+  transition: width 0.25s ease;
+}
+
+/* low-energy toggle */
+.le-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 2px 0;
+  user-select: none;
+}
+
+.le-toggle input { display: none; }
+
+.le-pip {
+  width: 22px;
+  height: 11px;
+  border-radius: 6px;
+  background: var(--dim);
+  border: 1px solid var(--line2);
+  position: relative;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.le-pip::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--muted);
+  top: 1px;
+  left: 1px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.le-toggle input:checked ~ .le-pip {
+  background: rgba(212,169,106,0.2);
+  border-color: var(--amber);
+}
+.le-toggle input:checked ~ .le-pip::after {
+  transform: translateX(11px);
+  background: var(--amber);
+}
+
+.le-toggle input:checked ~ .le-label { color: var(--amber); }
+
+/* reset */
+.reset-btn {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 2px 7px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.reset-btn:hover { color: #c85a46; border-color: #c85a46; }
+
+/* ── BODY ── */
+.body {
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  padding: 12px 0;
+  align-items: start;
+}
+
+/* ── COLUMN ── */
+.col {
+  background: var(--bg);
+  padding: 0 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.col-head {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line2);
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.col-head span {
+  font-size: 7px;
+  color: var(--dim);
+  letter-spacing: 0.06em;
+}
+
+/* ── ITEM ── */
+.item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background 0.1s;
+  border-radius: 1px;
+}
+
+.item:last-child { border-bottom: none; }
+.item:hover { background: rgba(255,255,255,0.02); }
+
+.item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+  border: 1px solid var(--dim);
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  position: relative;
+}
+
+.item input[type="checkbox"]:checked {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.item input[type="checkbox"]:checked::after {
+  content: '';
+  position: absolute;
+  left: 2px;
+  top: 0px;
+  width: 5px;
+  height: 3px;
+  border-left: 1.5px solid #0f100e;
+  border-bottom: 1.5px solid #0f100e;
+  transform: rotate(-45deg);
+}
+
+.item label {
+  font-size: 11px;
+  color: var(--ink);
+  line-height: 1.45;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+}
+
+/* done state */
+.item.done label {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--strike);
+}
+
+/* optional items in low-energy mode */
+.item.optional {
+  transition: opacity 0.2s;
+}
+
+.le-on .item.optional {
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+/* low-energy badge on item */
+.item .le-badge {
+  font-size: 7px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: rgba(212,169,106,0.12);
+  border-radius: 2px;
+  padding: 1px 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: none;
+}
+
+.le-on .item.optional .le-badge { display: block; } /* won't show because opacity:0, just in case */
+
+/* ── FOOTER ── */
+.ftr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0 12px;
+  border-top: 1px solid var(--line2);
+  flex-shrink: 0;
+}
+
+.ftr-links {
+  display: flex;
+  gap: 12px;
+}
+
+.ftr-link {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+  background: none;
+  border: none;
+  font-family: var(--mono);
+  padding: 0;
+}
+
+.ftr-link:hover { color: var(--ink); }
+
+.ftr-note {
+  font-size: 9px;
+  color: var(--dim);
+  letter-spacing: 0.04em;
+}
+</style>
+</head>
+<body>
+
+<div class="shell" id="shell">
+
+  <!-- HEADER -->
+  <header class="hdr">
+    <div class="hdr-left">
+      <span class="hdr-title">Monthly Workflow</span>
+      <button class="hdr-month" id="month-btn" onclick="promptMonth()">— set month —</button>
+    </div>
+    <div class="hdr-right">
+      <div class="prog-pill">
+        <span id="prog-count">0/21</span>
+        <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+        <span id="prog-pct">0%</span>
+      </div>
+      <label class="le-toggle">
+        <input type="checkbox" id="le" onchange="toggleLE()">
+        <span class="le-pip"></span>
+        <span class="le-label">Low energy</span>
+      </label>
+      <button class="reset-btn" onclick="reset()">Reset</button>
+    </div>
+  </header>
+
+  <!-- COLUMNS -->
+  <div class="body" id="board">
+
+    <!-- COL 1: POST-FIELD -->
+    <div class="col">
+      <div class="col-head">Post-Field <span>after every trip</span></div>
+
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c1">
+        <label for="c1">Transfer footage → external drive <code style="font-size:9px;color:var(--muted)">01_RAW/</code></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c2">
+        <label for="c2">GoPro cloud backup confirmed</label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c3">
+        <label for="c3">SD card formatted in-camera</label>
+      </div>
+      <div class="item optional" onclick="toggle(this)">
+        <input type="checkbox" id="c4">
+        <label for="c4">BRIEF.md note added<br><span style="font-size:9px;color:var(--muted)">date · location · activities · notable</span></label>
+      </div>
+      <div class="item optional" onclick="toggle(this)">
+        <input type="checkbox" id="c5">
+        <label for="c5">Quick photo reject pass<br><span style="font-size:9px;color:var(--muted)">obvious failures only, 5 min</span></label>
+      </div>
+    </div>
+
+    <!-- COL 2: SESSION 1 -->
+    <div class="col">
+      <div class="col-head">Session 1 — Review <span>~2h</span></div>
+
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c6">
+        <label for="c6">DaVinci project created<br><span style="font-size:9px;color:var(--muted)">YYYY-MM, footage imported to bins</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c7">
+        <label for="c7">Clips color-flagged<br><span style="font-size:9px;color:var(--muted)">green=use · 15 clips max</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c8">
+        <label for="c8">SELECTS_Master timeline built</label>
+      </div>
+      <div class="item optional" onclick="toggle(this)">
+        <input type="checkbox" id="c9">
+        <label for="c9">Photo candidates in Lightroom<br><span style="font-size:9px;color:var(--muted)">top 10–15 identified</span></label>
+      </div>
+    </div>
+
+    <!-- COL 3: SESSION 2 -->
+    <div class="col">
+      <div class="col-head">Session 2 — Edit <span>~3h</span></div>
+
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c10">
+        <label for="c10">Monthly film cut<br><span style="font-size:9px;color:var(--muted)">90s target · 5-part structure</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c11">
+        <label for="c11">Short clips extracted<br><span style="font-size:9px;color:var(--muted)">3 clips from film timeline</span></label>
+      </div>
+      <div class="item optional" onclick="toggle(this)">
+        <input type="checkbox" id="c12">
+        <label for="c12">9:16 crop timelines created</label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c13">
+        <label for="c13">Color grade applied<br><span style="font-size:9px;color:var(--muted)">saved still → apply → done</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c14">
+        <label for="c14">Audio set<br><span style="font-size:9px;color:var(--muted)">music −18dB · voice HPF 80Hz</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c15">
+        <label for="c15">All timelines queued → exports running</label>
+      </div>
+    </div>
+
+    <!-- COL 4: SESSION 3 -->
+    <div class="col">
+      <div class="col-head">Session 3 — Publish <span>~1h</span></div>
+
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c16">
+        <label for="c16">Photos selected + base preset<br><span style="font-size:9px;color:var(--muted)">10 standard · 5 low energy</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c17">
+        <label for="c17">Photos exported<br><span style="font-size:9px;color:var(--muted)">web + social to Photos_Exported/</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c18">
+        <label for="c18">BRIEF.md → Marketing Director Claude<br><span style="font-size:9px;color:var(--muted)">MODE: standard or minimal month</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c19">
+        <label for="c19">Film uploaded to YouTube<br><span style="font-size:9px;color:var(--muted)">scheduled · 1st Saturday · 9am</span></label>
+      </div>
+      <div class="item optional" onclick="toggle(this)">
+        <input type="checkbox" id="c20">
+        <label for="c20">Reels scheduled in Meta<br><span style="font-size:9px;color:var(--muted)">Tuesdays × 3 weeks</span></label>
+      </div>
+      <div class="item" onclick="toggle(this)">
+        <input type="checkbox" id="c21">
+        <label for="c21">Archive page pushed<br><span style="font-size:9px;color:var(--muted)">copy → 5 fields → git push</span></label>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="ftr">
+    <div class="ftr-links">
+      <button class="ftr-link" onclick="window.top.location.href='/workflow'">↗ Full workflow</button>
+      <button class="ftr-link" onclick="window.top.location.href='/setup'">↗ Setup</button>
+    </div>
+    <span class="ftr-note" id="ftr-status">Low energy mode: off · optional items shown</span>
+  </footer>
+
+</div>
+
+<script>
+const TOTAL = 21;
+const LE_KEY = 'cl_le';
+const MONTH_KEY = 'cl_month';
+
+function toggle(row) {
+  if (row.classList.contains('optional') && document.getElementById('le').checked) return;
+  const cb = row.querySelector('input[type="checkbox"]');
+  cb.checked = !cb.checked;
+  row.classList.toggle('done', cb.checked);
+  save(cb.id, cb.checked);
+  updateProgress();
+}
+
+function save(id, val) {
+  localStorage.setItem('cl_' + id, val);
+}
+
+function updateProgress() {
+  const le = document.getElementById('le').checked;
+  const optionals = document.querySelectorAll('.item.optional input');
+  const all = document.querySelectorAll('.item input[type="checkbox"]');
+  let active = 0, checked = 0;
+  all.forEach(cb => {
+    const isOpt = cb.closest('.item').classList.contains('optional');
+    if (le && isOpt) return;
+    active++;
+    if (cb.checked) checked++;
+  });
+  const pct = active > 0 ? Math.round(checked / active * 100) : 0;
+  document.getElementById('prog-count').textContent = checked + '/' + active;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+function toggleLE() {
+  const on = document.getElementById('le').checked;
+  document.getElementById('shell').classList.toggle('le-on', on);
+  localStorage.setItem(LE_KEY, on);
+  document.getElementById('ftr-status').textContent = on
+    ? 'Low energy mode: on · optional items hidden'
+    : 'Low energy mode: off · optional items shown';
+  updateProgress();
+}
+
+function reset() {
+  if (!confirm('Reset checklist for new month?')) return;
+  document.querySelectorAll('.item input[type="checkbox"]').forEach(cb => {
+    cb.checked = false;
+    cb.closest('.item').classList.remove('done');
+    localStorage.removeItem('cl_' + cb.id);
+  });
+  updateProgress();
+}
+
+function promptMonth() {
+  const m = prompt('Month label (e.g. June 2025):');
+  if (m && m.trim()) {
+    const label = m.trim();
+    document.getElementById('month-btn').textContent = label;
+    document.title = 'CHECKLIST · ' + label;
+    localStorage.setItem(MONTH_KEY, label);
+  }
+}
+
+// Restore state
+(function init() {
+  const le = localStorage.getItem(LE_KEY) === 'true';
+  if (le) {
+    document.getElementById('le').checked = true;
+    document.getElementById('shell').classList.add('le-on');
+    document.getElementById('ftr-status').textContent = 'Low energy mode: on · optional items hidden';
+  }
+
+  const month = localStorage.getItem(MONTH_KEY);
+  if (month) {
+    document.getElementById('month-btn').textContent = month;
+    document.title = 'CHECKLIST · ' + month;
+  }
+
+  document.querySelectorAll('.item input[type="checkbox"]').forEach(cb => {
+    const saved = localStorage.getItem('cl_' + cb.id);
+    if (saved === 'true') {
+      cb.checked = true;
+      cb.closest('.item').classList.add('done');
+    }
+  });
+
+  updateProgress();
+})();
+</script>
+</body>
+</html>
