@@ -60,6 +60,21 @@ const nextConfig: NextConfig = {
         destination: 'https://github.com/sabbasov',
         permanent: true,
       },
+      {
+        source: '/setup',
+        destination: '/SETUP.html',
+        permanent: false,
+      },
+      {
+        source: '/checklist',
+        destination: '/CHECKLIST.html',
+        permanent: false,
+      },
+      {
+        source: '/workflow',
+        destination: '/WORKFLOW.html',
+        permanent: false,
+      },
     ];
   },
   // Allow access to remote image placeholder.
