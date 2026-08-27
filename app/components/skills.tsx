@@ -5,52 +5,32 @@ import { Brain, Database, Code, BarChart3, Cloud, Users, Zap, Target } from 'luc
 
 const skillCategories = [
   {
-    category: "Data Science & ML",
+    category: "Languages",
     icon: <Brain size={24} />,
     color: "from-purple-500 to-pink-500",
     borderColor: "border-purple-200 dark:border-purple-800",
-    skills: [
-      { name: "Machine Learning", level: 85, description: "Random Forest, scikit-learn, model validation" },
-      { name: "Data Pipeline", level: 90, description: "ETL, data cleaning, automation scripts" },
-      { name: "Statistical Analysis", level: 80, description: "R, tidymodels, data visualization" },
-      { name: "Predictive Modeling", level: 75, description: "Flight delay prediction, risk scoring" }
-    ]
+    skills: ["Python", "TypeScript", "JavaScript", "SQL", "R"],
   },
   {
-    category: "Software Development",
+    category: "Frameworks",
     icon: <Code size={24} />,
     color: "from-blue-500 to-cyan-500", 
     borderColor: "border-blue-200 dark:border-blue-800",
-    skills: [
-      { name: "Full-Stack Development", level: 85, description: "Next.js, TypeScript, Flask, PostgreSQL" },
-      { name: "API Development", level: 80, description: "RESTful APIs, external integrations" },
-      { name: "Database Design", level: 75, description: "SQL, relational modeling, optimization" },
-      { name: "Version Control", level: 90, description: "Git workflows, collaboration" }
-    ]
+    skills: ["Next.js", "React", "Flask", "Tailwind CSS"],
   },
   {
-    category: "Data Engineering",
+    category: "Tools",
     icon: <Database size={24} />,
     color: "from-green-500 to-emerald-500",
     borderColor: "border-green-200 dark:border-green-800", 
-    skills: [
-      { name: "Data Processing", level: 85, description: "Python, pandas, data transformation" },
-      { name: "Cloud Platforms", level: 70, description: "Supabase, Vercel deployment" },
-      { name: "Automation", level: 80, description: "Scripting, workflow optimization" },
-      { name: "Data Visualization", level: 75, description: "Plotly, interactive dashboards" }
-    ]
+    skills: ["Git", "GitHub", "Vercel", "Postman", "Jupyter", "Linux"],
   },
   {
-    category: "Leadership & Collaboration", 
+    category: "Databases", 
     icon: <Users size={24} />,
     color: "from-orange-500 to-red-500",
     borderColor: "border-orange-200 dark:border-orange-800",
-    skills: [
-      { name: "Team Leadership", level: 85, description: "Leading 5-6 staff, conflict resolution" },
-      { name: "Project Management", level: 75, description: "End-to-end project delivery" },
-      { name: "Technical Communication", level: 80, description: "Documentation, stakeholder updates" },
-      { name: "Problem Solving", level: 90, description: "Real-time issue resolution" }
-    ]
+    skills: ["PostgreSQL", "Supabase", "SQLite"],
   }
 ];
 
@@ -92,36 +72,17 @@ const Skills = () => {
                 </h3>
               </div>
 
-              <div className="space-y-6">
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
-                    key={skill.name}
+                    key={skill}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
                     viewport={{ once: true }}
-                    className="group"
+                    className={`text-sm font-medium px-3 py-1.5 rounded-full border bg-gradient-to-r ${category.color} text-white`}
                   >
-                    <div className="flex justify-between items-center mb-2">
-                      <h4 className="font-semibold text-zinc-800 dark:text-zinc-200 group-hover:text-zinc-900 dark:group-hover:text-white transition-colors">
-                        {skill.name}
-                      </h4>
-                      <span className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-zinc-200 dark:bg-zinc-800 rounded-full h-2 mb-2 overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        transition={{ duration: 1, delay: categoryIndex * 0.2 + skillIndex * 0.1 }}
-                        viewport={{ once: true }}
-                        className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
-                      />
-                    </div>
-                    <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                      {skill.description}
-                    </p>
+                    {skill}
                   </motion.div>
                 ))}
               </div>

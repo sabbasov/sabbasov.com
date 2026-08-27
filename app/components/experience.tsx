@@ -9,7 +9,7 @@ const experienceData = [
     company: 'Bon Appetit',
     period: 'Aug 2025 - Present',
     description:
-      'I lead a team of 5-6 staff during busy service hours. My role is to coordinate tasks and keep communication clear so that everything runs smoothly and guests are taken care of. I focus on solving problems in real-time and making sure our team hits our safety and service goals every shift.',
+      'I lead a team of 5-6 staff during busy service hours and served over 200+ diners per shift in a fast-paced environment. My role is to coordinate tasks and keep communication clear so that everything runs smoothly and guests are taken care of. I focus on solving problems in real-time and making sure our team hits our safety and service goals every shift.',
     icon: <Users size={20} />,
     color: 'from-orange-500 to-red-500',
     current: true,

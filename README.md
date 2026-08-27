@@ -22,6 +22,7 @@ A personal portfolio website showcasing my projects and experience in Mathematic
 - `/app/components`: UI components (Hero, Experience, Education, Projects, Skills, Contact, Footer, Header)
 - `/app/aeroguard`: Dedicated project page for AeroGuard aviation safety tool
 - `/app/airport-traffic-analyzer`: Dedicated project page for Airport Traffic Analyzer ML project
+- `/app/scholarship-matcher`: Dedicated project page for COI Scholarship Matcher
 - `/hooks`: Custom React hooks
 - `/lib`: Utility functions
 
@@ -31,7 +32,7 @@ A personal portfolio website showcasing my projects and experience in Mathematic
 - **Interactive Sections:** 
   - Hero section with tech stack showcase
   - Timeline-based experience and education sections
-  - Skills section with competency indicators
+  - Skills section with grouped technology tags
   - Featured projects with detailed pages
   - Contact information
 - **Performance Optimized:** Fast loading with Next.js static generation
