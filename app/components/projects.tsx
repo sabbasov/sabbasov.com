@@ -6,14 +6,14 @@ import Link from 'next/link';
 
 const featuredProjects = [
   {
-    title: 'AeroGuard',
-    subtitle: 'Aviation Safety Research Tool',
-    description: 'An aviation safety research tool built around FAA data. Enter an FAA tail number and get aircraft registration info, maintenance history, and applicable airworthiness directives with risk scoring.',
-    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Python', 'Gemini AI'],
-    link: '/aeroguard',
-    external: 'https://aeroguard-gamma.vercel.app/',
-    github: 'https://github.com/sabbasov/aeroguard',
-    gradient: 'from-[#355872] to-[#2a4356]',
+    title: 'COI Scholarship Matcher',
+    subtitle: 'Intelligent Scholarship Matching Engine',
+    description: 'A matching engine that parses scholarship criteria, evaluates student profiles against complex eligibility rules, and surfaces the most relevant COI financial aid opportunities quickly.',
+    technologies: ['Next.js', 'TypeScript', 'React', 'Tailwind CSS', 'Python', 'REST APIs'],
+    link: '/scholarship-matcher',
+    external: 'https://github.com/sabbasov/coi-scholarship-matcher/',
+    github: 'https://github.com/sabbasov/coi-scholarship-matcher/',
+    gradient: 'from-[#4F46E5] to-[#276DC3]',
   },
   {
     title: 'Airport Traffic Analyzer',
@@ -24,6 +24,16 @@ const featuredProjects = [
     external: 'https://sabbasov.shinyapps.io/airport-traffic-analyzer/',
     github: 'https://github.com/sabbasov/airport-traffic-analyzer',
     gradient: 'from-[#276DC3] to-[#1e5a9e]',
+  },
+  {
+    title: 'AeroGuard',
+    subtitle: 'Aviation Safety Research Tool',
+    description: 'An aviation safety research tool built around FAA data. Enter an FAA tail number and get aircraft registration info, maintenance history, and applicable airworthiness directives with risk scoring.',
+    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Python', 'Gemini AI'],
+    link: '/aeroguard',
+    external: 'https://aeroguard-gamma.vercel.app/',
+    github: 'https://github.com/sabbasov/aeroguard',
+    gradient: 'from-[#355872] to-[#2a4356]',
   },
 ];
 
@@ -51,11 +61,11 @@ const Projects = () => {
             Projects
           </h2>
           <p className="text-lg text-zinc-600 dark:text-zinc-400 max-w-2xl mx-auto">
-            I'm passionate about aviation data and building tools that make complex information accessible and actionable.
+            I build practical data tools that make complex information accessible and actionable.
           </p>
         </motion.div>
 
-        {/* Featured Aviation Projects */}
+        {/* Featured Projects */}
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 lg:gap-8 mb-16">
           {featuredProjects.map((project, index) => (
             <motion.div
